@@ -7,10 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <style>
+    .two { transition: opacity 0.3s; }
+  </style>
 </head>
 
 <body>
-  <table style="width:100%;max-width:800px;margin:auto;border:0;border-spacing:0;border-collapse:separate;">
+  <table style="width:100%;max-width:880px;margin:auto;border:0;border-spacing:0;border-collapse:separate;">
     <tbody>
       <tr>
         <td>
@@ -57,6 +60,8 @@
             </tbody>
           </table>
 
+
+
           <!-- Research Section -->
           <table style="width:100%;margin:auto;border:0;border-spacing:0;border-collapse:separate;">
             <tbody>
@@ -79,915 +84,201 @@
             </tbody>
           </table>
 
-          <!-- Project: NewtonGen -->
-          <table style="width:100%;margin:auto;border:0;border-spacing:0 10px;border-collapse:separate;">
+          <table style="width:100%;margin:auto;border:0;border-spacing:0;border-collapse:separate;">
             <tbody>
-              <tr onmouseover="newton_gen_start()" onmouseout="newton_gen()">
-                <td style="padding:16px;width:20%;vertical-align:middle;">
-                  <div class="two" id="newton_gen">
-                    <img src="images/newtongen_teaser.gif" width="160">
-                  </div>
-                  <script type="text/javascript">
-                    function newton_gen() {
-                      document.getElementById('newton_gen').style.opacity = "0";
-                    }
-                    newton_gen();
-                  </script>
+              <!-- NewtonGen -->
+              <tr>
+                <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+                  <img src="images/newtongen_teaser.gif" alt="project image" style="width:auto; height:auto; max-width:100%;" />
                 </td>
-                <td style="padding:8px;width:80%;vertical-align:middle;">
-                  <a href="https://arxiv.org/abs/2509.21309">
-                    <span class="papertitle">NewtonGen: Physics-Consistent and Controllable Text-to-Video Generation via Neural Newtonian Dynamics</span>
-                  </a>
-                  <br>
-                  <strong>Yu Yuan</strong>, Xijun Wang, Tharindu Wickremasinghe, Zeeshan Nadir, Bole Ma, Stanley H. Chan
-                  <br>
-                  <em>Under Review</em>
-                  <br>
-                  <a href="https://yuyuan-space.github.io/NewtonGen/">proj</a> /
-                  <a href="https://arxiv.org/abs/2509.21309">arXiv</a> /
-                  <a href="https://github.com/pandayuanyu/NewtonGen">code</a>
+                <td style="padding:2.5%;width:75%;vertical-align:middle">
+                  <span class="papertitle">NewtonGen: Physics-Consistent and Controllable Text-to-Video Generation via Neural Newtonian Dynamics</span><br><br>
+                  <strong>Yu Yuan</strong>, Xijun Wang, Tharindu Wickremasinghe, Zeeshan Nadir, Bole Ma, Stanley H. Chan<br>
+                  <em>Under Review</em><br>
+                  <a href="https://yuyuan-space.github.io/NewtonGen/"> proj</a> /
+                  <a href="https://arxiv.org/abs/2509.21309"> arXiv</a> /
+                  <a href="https://github.com/pandayuanyu/NewtonGen">> code</a>
                 </td>
               </tr>
 
-              <!-- Project: Generative Photography -->
-              <tr onmouseover="gen_photo_start()" onmouseout="gen_photo()">
-                <td style="padding:16px;width:20%;vertical-align:middle;">
-                  <div class="two" id="gen_photo">
-                    <img src="images/generative-photography.gif" width="160">
-                  </div>
-                  <script type="text/javascript">
-                    function gen_photo() {
-                      document.getElementById('gen_photo').style.opacity = "0";
-                    }
-                    gen_photo();
-                  </script>
+              <!-- Generative Photography -->
+              <tr>
+                <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+                  <img src="images/generative-photography.gif" alt="project image" style="width:auto; height:auto; max-width:100%;" />
                 </td>
-                <td style="padding:8px;width:80%;vertical-align:middle;">
-                  <a href="https://arxiv.org/abs/2412.02168">
-                    <span class="papertitle">Generative Photography: Scene-Consistent Camera Control for Realistic Text-to-Image Synthesis</span>
-                  </a>
-                  <br>
-                  <strong>Yu Yuan</strong>, Xijun Wang, Prateek Chennuri, Xingguang Zhang, Stanley H. Chan
-                  <br>
-                  <em>CVPR 2025 <strong>(Highlight)</strong></em> & Demo
-                  <br>
-                  <a href="https://generative-photography.github.io/project/">proj</a> /
-                  <a href="https://arxiv.org/abs/2412.02168">arXiv</a> /
-                  <a href="https://github.com/pandayuanyu/generative-photography">code</a> /
-                  <a href="https://huggingface.co/datasets/pandaphd/camera_settings">dataset</a> /
-                  <a href="https://huggingface.co/spaces/pandaphd/generative_photography">demo</a>
+                <td style="padding:2.5%;width:75%;vertical-align:middle">
+                  <span class="papertitle">Generative Photography: Scene-Consistent Camera Control for Realistic Text-to-Image Synthesis</span><br><br>
+                  <strong>Yu Yuan</strong>, Xijun Wang, Yichen Sheng, Prateek Chennuri, Xingguang Zhang, Stanley Chan<br>
+                  <em>CVPR 2025 <span style="color: red; font-weight: bold">(highlight)</span></em> & Demo<br> 
+                  <a href="https://generative-photography.github.io/project/"> proj</a> /
+                  <a href="https://arxiv.org/abs/2412.02168"> arxiv</a> /
+                  <a href="https://github.com/pandayuanyu/generative-photography"> code</a> /
+                  <a href="https://huggingface.co/datasets/pandaphd/camera_settings"> dataset</a> /
+                  <a href="https://huggingface.co/spaces/pandaphd/generative_photography"> demo</a>
+                </td>
+              </tr>
+
+              <!-- StarDiffusion -->
+              <tr>
+                <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+                  <img src="images/StarDiffusion.png" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+                </td>
+                <td style="padding:2.5%;width:75%;vertical-align:middle">
+                  <span class="papertitle">Learning to Kindle the Starlight</span><br><br>
+                  <strong>Yu Yuan</strong>, Jiaqi Wu, Lindong Wang, Zhongliang Jing, Henry Leung, Shuyuan Zhu, Han Pan<br>
+                  <em>arXiv 2023</em><br>
+                  <a href="https://arxiv.org/abs/2211.09206"> arXiv</a> /
+                  <a href="https://github.com/pandayuanyu/StarDiffusion"> code</a> /
+                  <a href="https://huggingface.co/datasets/pandaphd/Star_Field_Image_Enhancement_Benchmark"> dataset</a>
                 </td>
               </tr>
             </tbody>
           </table>
-
-
-              <!-- Project: StarDiffusion -->
-              <tr onmouseover="gen_photo_start()" onmouseout="gen_photo()">
-                <td style="padding:16px;width:20%;vertical-align:middle;">
-                  <div class="two" id="gen_photo">
-                    <img src="./images/StarDiffusion.png" width="160">
-                  </div>
-                  <script type="text/javascript">
-                    function gen_photo() {
-                      document.getElementById('gen_photo').style.opacity = "0";
-                    }
-                    gen_photo();
-                  </script>
-                </td>
-                <td style="padding:8px;width:80%;vertical-align:middle;">
-                  <a href="https://arxiv.org/abs/2412.02168">
-                    <span class="papertitle">Learning to Kindle the Starlight</span>
-                  </a>
-                  <br>
-                  <strong>Yu Yuan</strong>, Jiaqi Wu, Lindong Wang, Zhongliang Jing, Henry Leung, Shuyuan Zhu, Han Pan
-                  <br>
-                  <em>arXiv 2023</strong>
-                  <br>
-                  <a href="https://arxiv.org/abs/2211.09206">arXiv</a> /
-                  <a href="https://github.com/pandayuanyu/StarDiffusion">code</a> /
-                  <a href="https://huggingface.co/datasets/pandaphd/Star_Field_Image_Enhancement_Benchmark">dataset</a> 
-              </tr>
-            </tbody>
-          </table>
-
 
           <!-- Category: Computational Photography -->
           <table style="width:100%;margin:auto;border:0;border-spacing:0;border-collapse:separate;">
             <tbody>
+              <tr><td style="padding:36px 16px 4px 16px;"><h2 style="font-size:1.45em;color:#ff6f61;">Computational Photography</h2></td></tr>
+            </tbody>
+          </table>
+
+          <table style="width:100%;margin:auto;border:0;border-spacing:0;border-collapse:separate;">
+            <tbody>
+              <!-- iHDR -->
               <tr>
-                <td style="padding:36px 16px 4px 16px;">
-                  <h2 style="font-size:1.45em;color:#ff6f61;">Computational Photography</h2>
+                <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+                  <img src="images/iHDR.png" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+                </td>
+                <td style="padding:2.5%;width:75%;vertical-align:middle">
+                  <span class="papertitle">iHDR: Iterative HDR Imaging with Arbitrary Number of Inputs</span><br><br>
+                  <strong>Yu Yuan</strong>, Yiheng Chi, Xingguang Zhang, Stanley H. Chan<br>
+                  <em>ICIP 2025</em><br>
+                  <a href="https://arxiv.org/abs/2505.22971"> arXiv</a>
+                </td>
+              </tr>
+
+              <!-- AstroDiff -->
+              <tr>
+                <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+                  <img src="images/AstroDiff.png" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+                </td>
+                <td style="padding:2.5%;width:75%;vertical-align:middle">
+                  <span class="papertitle">Astrophotography Turbulence Mitigation via Generative Models</span><br><br>
+                  Joonyeoup Kim, <strong>Yu Yuan</strong>, Xingguang Zhang, Xijun Wang, Stanley H. Chan<br>
+                  <em>ICIP 2025</em><br>
+                  <a href="https://web-six-kappa-66.vercel.app/"> proj</a> /
+                  <a href="https://arxiv.org/abs/2506.02981"> arXiv</a>
                 </td>
               </tr>
             </tbody>
           </table>
-          
 
-          <!-- Project: Generative Photography -->
-          <table style="width:100%;margin:auto;border:0;border-spacing:0 10px;border-collapse:separate;">
+          <!-- Category: Real-world Vision -->
+          <table style="width:100%;margin:auto;border:0;border-spacing:0;border-collapse:separate;">
             <tbody>
-              <tr onmouseover="newton_gen_start()" onmouseout="newton_gen()">
-                <td style="padding:16px;width:20%;vertical-align:middle;">
-                  <div class="two" id="newton_gen">
-                    <img src="images/newtongen_teaser.gif" width="160">
-                  </div>
-                  <script type="text/javascript">
-                    function newton_gen() {
-                      document.getElementById('newton_gen').style.opacity = "0";
-                    }
-                    newton_gen();
-                  </script>
+              <tr><td style="padding:36px 16px 4px 16px;"><h2 style="font-size:1.45em;color:#ff6f61;">Real-world Vision</h2></td></tr>
+            </tbody>
+          </table>
+
+          <table style="width:100%;margin:auto;border:0;border-spacing:0;border-collapse:separate;">
+            <tbody>
+              <!-- MambaTM -->
+              <tr>
+                <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+                  <img src="images/MambaTM.png" alt="project image" style="width:auto; height:auto; max-width:100%;" />
                 </td>
-                <td style="padding:8px;width:80%;vertical-align:middle;">
-                  <a href="https://arxiv.org/abs/2509.21309">
-                    <span class="papertitle">NewtonGen: Physics-Consistent and Controllable Text-to-Video Generation via Neural Newtonian Dynamics</span>
-                  </a>
-                  <br>
-                  <strong>Yu Yuan</strong>, Xijun Wang, Tharindu Wickremasinghe, Zeeshan Nadir, Bole Ma, Stanley H. Chan
-                  <br>
-                  <em>Under Review</em>
-                  <br>
-                  <a href="https://yuyuan-space.github.io/NewtonGen/">proj</a> /
-                  <a href="https://arxiv.org/abs/2509.21309">arXiv</a> /
-                  <a href="https://github.com/pandayuanyu/NewtonGen">code</a>
+                <td style="padding:2.5%;width:75%;vertical-align:middle">
+                  <span class="papertitle">Learning Phase Distortion with Selective State Space Models for Video Turbulence Mitigation</span><br><br>
+                  Xingguang Zhang, Nicholas Chimitt, Xijun Wang, <strong>Yu Yuan</strong>, Stanley H. Chan<br>
+                  <em>CVPR 2025 <span style="color: red; font-weight: bold">(highlight)</span></em><br>
+                  <a href="https://xg416.github.io/MambaTM/"> proj</a> /
+                  <a href="https://arxiv.org/abs/2504.02697"> arXiv</a> /
+                  <a href="https://github.com/xg416/MambaTM"> code</a> 
+                </td>
+              </tr>
+
+              <!-- RR -->
+              <tr>
+                <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+                  <img src="images/RR.png" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+                </td>
+                <td style="padding:2.5%;width:75%;vertical-align:middle">
+                  <span class="papertitle">Beyond Clean Pixels: Interdisciplinary Lessons from Turbulent Long-Range Face Recognition</span><br><br>
+                  Lanqing Guo<sup>1</sup>, Xijun Wang<sup>1</sup>, Minchul Kim<sup>1</sup>, <strong>Yu Yuan</strong>, Wes Robbins, Xingguang Zhang, Stanley H. Chan, Zhangyang Wang, Xiaoming Liu<br>
+                  <em>Under Review</em><br>
+                  <a href="https://arxiv.org/abs/2412.02168"> arXiv</a>
+                </td>
+              </tr>
+
+              <!-- PGD -->
+              <tr>
+                <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+                  <img src="images/PGD.png" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+                </td>
+                <td style="padding:2.5%;width:75%;vertical-align:middle">
+                  <span class="papertitle">Personalized Generative Low-light Image Denoising and Enhancement</span><br><br>
+                  Xijun Wang, Prateek Chennuri, <strong>Yu Yuan</strong>, Bole Ma, Xingguang Zhang, Stanley H. Chan<br>
+                  <em>Under Review</em><br>
+                  <a href="https://genai-restore.github.io/DiffPGD/"> proj</a> / 
+                  <a href="https://arxiv.org/abs/2412.14327"> arXiv</a>
+                </td>
+              </tr>
+
+              <!-- RCMixer -->
+              <tr>
+                <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+                  <img src="images/RCMixer.jpg" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+                </td>
+                <td style="padding:2.5%;width:75%;vertical-align:middle">
+                  <span class="papertitle">RCMixer: Radar-camera Fusion Based on Vision Transformer for Robust Object Detection</span><br><br>
+                  Lindong Wang, Hongya Tuo, <strong>Yu Yuan</strong>, Henry Leung, Zhongliang Jing<br>
+                  <em>JVCI 2024</em><br>
+                  <a href="https://doi.org/10.1016/j.jvcir.2024.104367"> doi</a>
+                </td>
+              </tr>
+
+              <!-- imfusion -->
+              <tr>
+                <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+                  <img src="images/imfusion.png" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+                </td>
+                <td style="padding:2.5%;width:75%;vertical-align:middle">
+                  <span class="papertitle">Multimodal Image Fusion based on Hybrid CNN-Transformer and Non-local Cross-modal Attention</span><br><br>
+                  <strong>Yu Yuan</strong>, Jiaqi Wu, Zhongliang Jing, Henry Leung, Han Pan<br>
+                  <em>arXiv 2023</em><br>
+                  <a href="https://arxiv.org/abs/2210.09847"> arXiv</a> /
+                  <a href="https://github.com/pandayuanyu/HCFusion"> code</a>
                 </td>
               </tr>
 
 
 
-
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <!-- Projects Section -->
+          <table style="width:100%;margin:auto;border:0;border-spacing:0;border-collapse:separate;">
+            <tbody>
               <tr>
-              <td style="padding:36px 16px 4px 16px;width:100%;vertical-align:middle">
-                <h2 style="font-size:1.45em; color:#ff6f61;">Generative Restoration & Enhancement</h2>
-              </td>
-            </tr>
-          </tbody></table>
+                <td style="padding:8px 16px;">
+                  <h2>Projects</h2>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <table style="width:100%;margin:auto;border:0;border-spacing:0;border-collapse:separate;">
+            <tbody>
+              <!-- NewtonGen -->
               <tr>
-              <td style="padding:16px 16px 4px 16px;width:100%;vertical-align:middle">
-                <h3 style="font-size:1.25em; color:#555555;">Low-Light Enhancement and Denoising</h3>
-              </td>
-            </tr>
-          </tbody></table>
-
-          <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-
-        <tr onmouseout="personalized_low_light()" onmouseover="personalized_low_light_start()" >
-      <td style="padding:16px;width:20%;vertical-align:middle">
-          <div class="two" id='lowlight_image'><image  width=100% height=100% muted autoplay loop>
-          <source src="images/low_light.png" type="image/png">
-
-
-          </image></div>
-          <img src='images/low_light.png' width="160">
-        <script type="text/javascript">
-<!--          function bolt3d_start() {-->
-<!--            document.getElementById('lowlight_image').style.opacity = "1";-->
-<!--          }-->
-
-          function personalized_low_light() {
-            document.getElementById('lowlight_image').style.opacity = "0";
-          }
-          personalized_low_light()
-        </script>
-      </td>
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://arxiv.org/pdf/2412.14327">
-          <span class="papertitle">Personalized Generative Low-light Image Denoising and Enhancement</span>
-        </a>
-        <br>
-        <strong>Xijun Wang</strong>,
-        Prateek Chennuri,
-        Yu Yuan,
-        Bole Ma,
-        Xingguang Zhang,
-        Dilshan Godaliyadda,
-        <br>
-        Hamid R. Sheikh,
-        Stanley H. Chan
-        <br>
-        <em>Under Review</em>
-        <br>
-        <a href="https://genai-restore.github.io/DiffPGD/">project page</a>
-        /
-        <a href="https://arxiv.org/pdf/2412.14327">PDF</a>
-        <p></p>
-        <p>
-		</p>
-      </td>
-    </tr>
-     </tbody></table>
-
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-              <tr>
-              <td style="padding:16px 16px 4px 16px;width:100%;vertical-align:middle">
-                <h3 style="font-size:1.25em; color:#555555;">Blind Restoration</h3>
-              </td>
-            </tr>
-          </tbody></table>
-
-<table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-    <tr onmouseout="blind_face()" onmouseover="blind_face_start()" >
-      <td style="padding:16px;width:20%;vertical-align:middle">
-          <div class="two" id='blind_face'><image  width=100% height=100% muted autoplay loop>
-          <source src="images/blind_face_arc.png" type="image/png">
-
-
-          </image></div>
-          <img src='images/blind_face_arc.png' width="160">
-        <script type="text/javascript">
-<!--          function bolt3d_start() {-->
-<!--            document.getElementById('blind_face').style.opacity = "1";-->
-<!--          }-->
-
-          function blind_face() {
-            document.getElementById('blind_face').style.opacity = "0";
-          }
-          blind_face()
-        </script>
-      </td>
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11084394">
-          <span class="papertitle">Generative Personalized Blind Face Restoration Enhanced by Physical Identity</span>
-        </a>
-        <br>
-        <strong>Xijun Wang</strong>,
-        Xingguang Zhang,
-        Yu Yuan,
-        Bole Ma,
-        Prateek Chennuri,
-        Stanley H. Chan
-        <br>
-        <em>IEEE ICIP</em>, 2025
-        <br>
-        <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11084394">PDF</a>
-        <p></p>
-        <p>
-		</p>
-      </td>
-    </tr>
-
-    </tbody></table>
-
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-              <tr>
-              <td style="padding:16px 16px 4px 16px;width:100%;vertical-align:middle">
-                <h3 style="font-size:1.25em; color:#555555;">Atmospheric Turbulence Removal</h3>
-              </td>
-            </tr>
-          </tbody></table>
-
-          <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-
-    <tr onmouseout="mamba_turb()" onmouseover="mamba_turb_start()" >
-      <td style="padding:16px;width:20%;vertical-align:middle">
-          <div class="two" id='mamba_turb'><image  width=100% height=100% muted autoplay loop>
-          <source src="images/mamba_turb.png" type="image/png">
-
-
-          </image></div>
-          <img src='images/mamba_turb.png' width="160">
-        <script type="text/javascript">
-<!--          function bolt3d_start() {-->
-<!--            document.getElementById('mamba_turb').style.opacity = "1";-->
-<!--          }-->
-
-          function mamba_turb() {
-            document.getElementById('mamba_turb').style.opacity = "0";
-          }
-          mamba_turb()
-        </script>
-      </td>
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://arxiv.org/pdf/2504.02697">
-          <span class="papertitle">Learning Phase Distortion with Selective State Space Models for Video Turbulence Mitigation</span>
-        </a>
-        <br>
-        Xingguang Zhang,
-        Nicholas Chimitt,
-        <strong>Xijun Wang</strong>,
-        Yu Yuan,
-        Stanley H. Chan
-        <br>
-        <em>CVPR <strong>(Highlight)</strong></em>, 2025
-        <br>
-        <a href="https://xg416.github.io/MambaTM/">project page</a>
-        /
-        <a href="https://arxiv.org/pdf/2504.02697">PDF</a>
-        <p></p>
-        <p>
-		</p>
-      </td>
-    </tr>
-
-    <tr onmouseout="astro_turbulence()" onmouseover="astro_turbulence_start()" >
-      <td style="padding:16px;width:20%;vertical-align:middle">
-          <div class="two" id='astro_turbulence'><image  width=100% height=100% muted autoplay loop>
-          <source src="images/astro_turbulence.png" type="image/png">
-
-
-          </image></div>
-          <img src='images/astro_turbulence.png' width="160">
-        <script type="text/javascript">
-<!--          function bolt3d_start() {-->
-<!--            document.getElementById('astro_turbulence').style.opacity = "1";-->
-<!--          }-->
-
-          function blind_face() {
-            document.getElementById('astro_turbulence').style.opacity = "0";
-          }
-          blind_face()
-        </script>
-      </td>
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://arxiv.org/pdf/2506.02981">
-          <span class="papertitle">Astrophotography Turbulence Mitigation via Generative Models</span>
-        </a>
-        <br>
-        Joonyeoup Kim,
-        Yu Yuan,
-        Xingguang Zhang,
-        <strong>Xijun Wang</strong>,
-        Stanley H. Chan
-        <br>
-        <em>IEEE ICIP</em>, 2025
-        <br>
-        <a href="https://arxiv.org/pdf/2506.02981">PDF</a>
-        <p></p>
-        <p>
-		</p>
-      </td>
-    </tr>
-
-    <tr onmouseout="real_turb()" onmouseover="real_turb_start()" >
-      <td style="padding:16px;width:20%;vertical-align:middle">
-          <div class="two" id='real_turb'><image  width=100% height=100% muted autoplay loop>
-          <source src="images/real_turb.png" type="image/png">
-
-
-          </image></div>
-          <img src='images/real_turb.png' width="160">
-        <script type="text/javascript">
-<!--          function bolt3d_start() {-->
-<!--            document.getElementById('real_turb').style.opacity = "1";-->
-<!--          }-->
-
-          function real_turb() {
-            document.getElementById('real_turb').style.opacity = "0";
-          }
-          real_turb()
-        </script>
-      </td>
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://ieeexplore.ieee.org/abstract/document/10647762">
-          <span class="papertitle">Real-World Atmospheric Turbulence Correction Via Domain Adaptation</span>
-        </a>
-        <br>
-        <strong>Xijun Wang</strong>,
-        Santiago López-Tapia,
-        Aggelos K. Katsaggelos
-        <br>
-        <em>IEEE ICIP <strong>(Oral)</strong></em>, 2024
-        <br>
-        <a href="https://ieeexplore.ieee.org/abstract/document/10647762">PDF</a>
-        <p></p>
-        <p>
-		</p>
-      </td>
-    </tr>
-
-
-        <tr onmouseout="variational_turb_access()" onmouseover="variational_turb_access_start()" >
-      <td style="padding:16px;width:20%;vertical-align:middle">
-          <div class="two" id='variational_turb_access'><image  width=100% height=100% muted autoplay loop>
-          <source src="images/variational_turb_access.png" type="image/png">
-
-
-          </image></div>
-          <img src='images/variational_turb_access.png' width="160">
-        <script type="text/javascript">
-<!--          function bolt3d_start() {-->
-<!--            document.getElementById('variational_turb_access').style.opacity = "1";-->
-<!--          }-->
-
-          function variational_turb_access() {
-            document.getElementById('variational_turb_access').style.opacity = "0";
-          }
-          variational_turb_access()
-        </script>
-      </td>
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://ieeexplore.ieee.org/document/10666503">
-          <span class="papertitle">Video Variational Deep Atmospheric Turbulence Correction</span>
-        </a>
-        <br>
-        Santiago López-Tapia,
-        <strong>Xijun Wang</strong>,
-        Aggelos K. Katsaggelos
-        <br>
-        <em>IEEE Access</em>, 2024
-        <br>
-        <a href="https://ieeexplore.ieee.org/document/10666503">PDF</a>
-        <p></p>
-        <p>
-		</p>
-      </td>
-    </tr>
-
-
-    <tr onmouseout="diff_turb()" onmouseover="diff_turb_start()" >
-      <td style="padding:16px;width:20%;vertical-align:middle">
-          <div class="two" id='diff_turb'><image  width=100% height=100% muted autoplay loop>
-          <source src="images/diff_turb.png" type="image/png">
-
-
-          </image></div>
-          <img src='images/diff_turb.png' width="160">
-        <script type="text/javascript">
-<!--          function bolt3d_start() {-->
-<!--            document.getElementById('diff_turb').style.opacity = "1";-->
-<!--          }-->
-
-          function diff_turb() {
-            document.getElementById('diff_turb').style.opacity = "0";
-          }
-          diff_turb()
-        </script>
-      </td>
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://ieeexplore.ieee.org/abstract/document/10254436">
-          <span class="papertitle">Atmospheric Turbulence Correction via Variational Deep Diffusion</span>
-        </a>
-        <br>
-        <strong>Xijun Wang</strong>,
-        Santiago López-Tapia,
-        Aggelos K. Katsaggelos
-        <br>
-        <em>IEEE MIPR<strong> (Oral)</strong></em>, 2024
-        <br>
-        <a href="https://ieeexplore.ieee.org/abstract/document/10254436">PDF</a>
-        <p></p>
-        <p>
-		</p>
-      </td>
-    </tr>
-
-
-    <tr onmouseout="variational_turb()" onmouseover="variational_turb_start()" >
-      <td style="padding:16px;width:20%;vertical-align:middle">
-          <div class="two" id='variational_turb'><image  width=100% height=100% muted autoplay loop>
-          <source src="images/variational_turb.png" type="image/png">
-
-
-          </image></div>
-          <img src='images/variational_turb.png' width="160">
-        <script type="text/javascript">
-<!--          function bolt3d_start() {-->
-<!--            document.getElementById('variational_turb').style.opacity = "1";-->
-<!--          }-->
-
-          function variational_turb() {
-            document.getElementById('variational_turb').style.opacity = "0";
-          }
-          variational_turb()
-        </script>
-      </td>
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://ieeexplore.ieee.org/abstract/document/10222374">
-          <span class="papertitle">Variational Deep Atmospheric Turbulence Correction for Video</span>
-        </a>
-        <br>
-        Santiago López-Tapia,
-        <strong>Xijun Wang</strong>,
-        Aggelos K. Katsaggelos
-        <br>
-        <em>IEEE ICIP</em>, 2023
-        <br>
-        <a href="https://ieeexplore.ieee.org/abstract/document/10222374">PDF</a>
-        <p></p>
-        <p>
-		</p>
-      </td>
-    </tr>
-
-    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-              <tr>
-              <td style="padding:16px 16px 4px 16px;width:100%;vertical-align:middle">
-                <h3 style="font-size:1.25em; color:#555555;">Super-Resolution</h3>
-              </td>
-            </tr>
-          </tbody></table>
-
-          <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-
-    <tr onmouseout="SA_loss()" onmouseover="SA_loss_start()" >
-      <td style="padding:16px;width:20%;vertical-align:middle">
-          <div class="two" id='SA_loss'><image  width=100% height=100% muted autoplay loop>
-          <source src="images/SA_loss.png" type="image/png">
-
-
-          </image></div>
-          <img src='images/SA_loss.png' width="160">
-        <script type="text/javascript">
-<!--          function bolt3d_start() {-->
-<!--            document.getElementById('SA_loss').style.opacity = "1";-->
-<!--          }-->
-
-          function SA_loss() {
-            document.getElementById('SA_loss').style.opacity = "0";
-          }
-          SA_loss()
-        </script>
-      </td>
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://ieeexplore.ieee.org/abstract/document/11031451">
-          <span class="papertitle">Spatially-Aware Loss Functions for GAN-Driven Super-Resolution</span>
-        </a>
-        <br>
-        <strong>Xijun Wang</strong>,
-        Santiago López-Tapia,
-        Xinyi Wu,
-        Rafael Molina,
-        Aggelos K. Katsaggelos
-        <br>
-        <em>IEEE Access</em>, 2025
-        <br>
-        <a href="https://ieeexplore.ieee.org/abstract/document/11031451">PDF</a>
-        <p></p>
-        <p>
-		</p>
-      </td>
-    </tr>
-
-
-    <tr onmouseout="temporal_vsr()" onmouseover="temporal_vsr_start()" >
-      <td style="padding:16px;width:20%;vertical-align:middle">
-          <div class="two" id='temporal_vsr'><image  width=100% height=100% muted autoplay loop>
-          <source src="images/temporal_vsr.png" type="image/png">
-
-
-          </image></div>
-          <img src='images/temporal_vsr.png' width="160">
-        <script type="text/javascript">
-<!--          function bolt3d_start() {-->
-<!--            document.getElementById('temporal_vsr').style.opacity = "1";-->
-<!--          }-->
-
-          function temporal_vsr() {
-            document.getElementById('temporal_vsr').style.opacity = "0";
-          }
-          temporal_vsr()
-        </script>
-      </td>
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://ieeexplore.ieee.org/abstract/document/10539094">
-          <span class="papertitle">Real-Time Lightweight Video Super-Resolution With RRED-Based Perceptual Constraint</span>
-        </a>
-        <br>
-        Xinyi Wu,
-        Santiago López-Tapia,
-        <strong>Xijun Wang</strong>,
-        Aggelos K. Katsaggelos
-        <br>
-        <em>IEEE TCSVT</em>, 2024
-        <br>
-        <a href="https://ieeexplore.ieee.org/abstract/document/10539094">PDF</a>
-        <p></p>
-        <p>
-		</p>
-      </td>
-    </tr>
-
-
-    <tr onmouseout="semantic_vsr()" onmouseover="semantic_vsr_start()" >
-      <td style="padding:16px;width:20%;vertical-align:middle">
-          <div class="two" id='semantic_vsr'><image  width=100% height=100% muted autoplay loop>
-          <source src="images/semantic_vsr.png" type="image/png">
-
-
-          </image></div>
-          <img src='images/semantic_vsr.png' width="160">
-        <script type="text/javascript">
-<!--          function bolt3d_start() {-->
-<!--            document.getElementById('semantic_vsr').style.opacity = "1";-->
-<!--          }-->
-
-          function semantic_vsr() {
-            document.getElementById('semantic_vsr').style.opacity = "0";
-          }
-          semantic_vsr()
-        </script>
-      </td>
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://ieeexplore.ieee.org/abstract/document/8902987">
-          <span class="papertitle">Semantic Prior Based Generative Adversarial Network for Video Super-Resolution</span>
-        </a>
-        <br>
-        Xinyi Wu,
-        Alice Lucas,
-        Santiago Lopez-Tapia,
-        <strong>Xijun Wang</strong>,
-        Yul Hee Kim,
-        Rafael Molina,
-        Aggelos K. Katsaggelos
-        <br>
-        <em>EUSIPCO</em>, 2019
-        <br>
-        <a href="https://ieeexplore.ieee.org/abstract/document/8902987">PDF</a>
-        <p></p>
-        <p>
-		</p>
-      </td>
-    </tr>
-
-    <tr onmouseout="composite_discriminator()" onmouseover="composite_discriminator_start()" >
-      <td style="padding:16px;width:20%;vertical-align:middle">
-          <div class="two" id='composite_discriminator'><image  width=100% height=100% muted autoplay loop>
-          <source src="images/composite_discriminator.png" type="image/png">
-
-
-          </image></div>
-          <img src='images/composite_discriminator.png' width="160">
-        <script type="text/javascript">
-<!--          function bolt3d_start() {-->
-<!--            document.getElementById('composite_discriminator').style.opacity = "1";-->
-<!--          }-->
-
-          function composite_discriminator() {
-            document.getElementById('composite_discriminator').style.opacity = "0";
-          }
-          composite_discriminator()
-        </script>
-      </td>
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://ieeexplore.ieee.org/abstract/document/8903072">
-          <span class="papertitle">A Composite Discriminator for Generative Adversarial Network based Video Super-Resolution</span>
-        </a>
-        <br>
-        <strong>Xijun Wang</strong>,
-        Alice Lucas,
-        Santiago Lopez-Tapia,
-        Xinyi Wu,
-        Rafael Molina,
-        Aggelos K. Katsaggelos
-        <br>
-        <em>EUSIPCO</em>, 2019
-        <br>
-        <a href="https://ieeexplore.ieee.org/abstract/document/8903072">PDF</a>
-        <p></p>
-        <p>
-		</p>
-      </td>
-    </tr>
-
-    <tr onmouseout="SA_vsr()" onmouseover="SA_vsr_start()" >
-      <td style="padding:16px;width:20%;vertical-align:middle">
-          <div class="two" id='SA_vsr'><image  width=100% height=100% muted autoplay loop>
-          <source src="images/SA_vsr.png" type="image/png">
-
-
-          </image></div>
-          <img src='images/SA_vsr.png' width="160">
-        <script type="text/javascript">
-<!--          function bolt3d_start() {-->
-<!--            document.getElementById('SA_vsr').style.opacity = "1";-->
-<!--          }-->
-
-          function SA_vsr() {
-            document.getElementById('SA_vsr').style.opacity = "0";
-          }
-          SA_vsr()
-        </script>
-      </td>
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://ieeexplore.ieee.org/abstract/document/8682742">
-          <span class="papertitle">Spatially Adaptive Losses for Video Super-resolution with GANs</span>
-        </a>
-        <br>
-        <strong>Xijun Wang</strong>,
-        Alice Lucas,
-        Santiago Lopez-Tapia,
-        Xinyi Wu,
-        Rafael Molina,
-        Aggelos K. Katsaggelos
-        <br>
-        <em>IEEE ICASSP <strong>(Oral)</strong></em>, 2019
-        <br>
-        <a href="https://ieeexplore.ieee.org/abstract/document/8682742">PDF</a>
-        <p></p>
-        <p>
-		</p>
-      </td>
-    </tr>
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-              <tr>
-              <td style="padding:16px 16px 4px 16px;width:100%;vertical-align:middle">
-                <h3 style="font-size:1.25em; color:#555555;">Motion Blur Removal</h3>
-              </td>
-            </tr>
-          </tbody></table>
-<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-    <tr onmouseout="mri_gan()" onmouseover="mri_gan_start()" >
-      <td style="padding:16px;width:20%;vertical-align:middle">
-          <div class="two" id='mri_gan'><image  width=100% height=100% muted autoplay loop>
-          <source src="images/mri_gan.png" type="image/png">
-
-
-          </image></div>
-          <img src='images/mri_gan.png' width="160">
-        <script type="text/javascript">
-<!--          function bolt3d_start() {-->
-<!--            document.getElementById('mri_gan').style.opacity = "1";-->
-<!--          }-->
-
-          function mri_gan() {
-            document.getElementById('mri_gan').style.opacity = "0";
-          }
-          mri_gan()
-        </script>
-      </td>
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12088/120880H/Motion-artifact-reduction-in-abdominal-MRIs-using-generative-adversarial-networks/10.1117/12.2605824.full">
-          <span class="papertitle">Motion artifact reduction in abdominal MRIs using generative adversarial networks with perceptual similarity loss</span>
-        </a>
-        <br>
-        Yunan Wu<sup>1</sup>,
-        <strong>Xijun Wang</strong><sup>1</sup>,
-        Aggelos K. Katsaggelos (<sup>1</sup>Joint first author)
-        <br>
-        <em>International Symposium on Medical Information Processing and Analysis <strong>(Oral)</strong></em>, 2021
-        <br>
-        <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12088/120880H/Motion-artifact-reduction-in-abdominal-MRIs-using-generative-adversarial-networks/10.1117/12.2605824.full">PDF</a>
-        <p></p>
-        <p>
-		</p>
-      </td>
-    </tr>
-</tbody></table>
-
-                     <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-              <tr>
-              <td style="padding:36px 16px 4px 16px;width:100%;vertical-align:middle">
-                <h2 style="font-size:1.45em; color:#ff6f61;">Restoration + Recognition</h2>
-              </td>
-            </tr>
-          </tbody></table>
-
-          <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-
-
-    <tr onmouseout="restore_recognition()" onmouseover="restore_recognition_start()" >
-      <td style="padding:16px;width:20%;vertical-align:middle">
-          <div class="two" id='restore_recognition'><image  width=100% height=100% muted autoplay loop>
-          <source src="images/restore_recognition.png" type="image/png">
-
-
-          </image></div>
-          <img src='images/restore_recognition_full.png' width="160">
-        <script type="text/javascript">
-<!--          function restore_recognition_start() {-->
-<!--            document.getElementById('restore_recognition').style.opacity = "1";-->
-<!--          }-->
-
-          function restore_recognition() {
-            document.getElementById('restore_recognition').style.opacity = "0";
-          }
-          restore_recognition()
-        </script>
-      </td>
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://arxiv.org/pdf/2412.14327">
-          <span class="papertitle">Restore What Matters: Lessons from Joint Restoration and Recognition</span>
-        </a>
-        <br>
-        Lanqing Guo<sup>1</sup>,
-        <strong>Xijun Wang</strong><sup>1</sup>,
-        Minchul Kim<sup>1</sup>
-        Yu Yuan,
-        Wes Robbins,
-        Xingguang Zhang,
-        Nicholas Chimitt,
-        Stanley H. Chan,
-        Zhangyang Wang,
-        Xiaoming Liu (<sup>1</sup>Joint first author)
-        <br>
-        <em>Under Review</em>
-        <br>
-        <p></p>
-        <p>
-		</p>
-      </td>
-    </tr>
-
-
-     </tbody></table>
-
-           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-              <tr>
-              <td style="padding:36px 16px 4px 16px;width:100%;vertical-align:middle">
-                <h2 style="font-size:1.45em; color:#ff6f61;">Video Activity Recognition</h2>
-              </td>
-            </tr>
-          </tbody></table>
-
-          <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-
-
-    <tr onmouseout="avian_solar()" onmouseover="avian_solar_start()" >
-      <td style="padding:16px;width:20%;vertical-align:middle">
-          <div class="two" id='avian_solar'><image  width=100% height=100% muted autoplay loop>
-          <source src="images/avian_solar.png" type="image/png">
-
-
-          </image></div>
-          <img src='images/avian_solar.png' width="160">
-        <script type="text/javascript">
-<!--          function bolt3d_start() {-->
-<!--            document.getElementById('avian_solar').style.opacity = "1";-->
-<!--          }-->
-
-          function avian_solar() {
-            document.getElementById('avian_solar').style.opacity = "0";
-          }
-          avian_solar()
-        </script>
-      </td>
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://dl.acm.org/doi/abs/10.1145/3669754.3669792">
-          <span class="papertitle">Avian Activity Classification Using Recurrent Networks to Fuse Videos with Metadata on Imbalanced Datasets</span>
-        </a>
-        <br>
-        <strong>Xijun Wang</strong>,
-        Adam Szymanski,
-        Yuki Hamada,
-        Aggelos K. Katsaggelos
-        <br>
-        <em>ICCAI</em><strong> (Oral)</strong>, 2024
-        <br>
-        <a href="https://dl.acm.org/doi/abs/10.1145/3669754.3669792">PDF</a>
-        <p></p>
-        <p>
-		</p>
-      </td>
-    </tr>
-
-    <tr onmouseout="vqk_net()" onmouseover="vqk_net_start()" >
-      <td style="padding:16px;width:20%;vertical-align:middle">
-          <div class="two" id='vqk_net'><image  width=100% height=100% muted autoplay loop>
-          <source src="images/vqk_net.png" type="image/png">
-
-
-          </image></div>
-          <img src='images/vqk_net.png' width="160">
-        <script type="text/javascript">
-<!--          function bolt3d_start() {-->
-<!--            document.getElementById('vqk_net').style.opacity = "1";-->
-<!--          }-->
-
-          function vqk_net() {
-            document.getElementById('vqk_net').style.opacity = "0";
-          }
-          vqk_net()
-        </script>
-      </td>
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://arxiv.org/abs/2305.04186">
-          <span class="papertitle">Video-Specific Query-Key Attention Modeling for Weakly-Supervised Temporal Action Localization</span>
-        </a>
-        <br>
-        <strong>Xijun Wang</strong>,
-        Aggelos K. Katsaggelos
-        <br>
-        <em>Under Review</em>
-        <br>
-        <a href="https://arxiv.org/abs/2305.04186">PDF</a>
-        <p></p>
-        <p>
-		</p>
-      </td>
-    </tr>
-
-     </tbody></table>
-
-
-
-
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-              <td style="padding:0px">
-                <br>
-                <p style="text-align:right;font-size:small;">
-                   Cool sites from <a href="https://jonbarron.info/">Jon Barron's website</a>. Thanks for <a href="https://leonidk.com/">Leonid Keselman</a>'s Jekyll template.
-                </p>
-              </td>
-            </tr>
-          </tbody></table>
-        </td>
-      </tr>
-    </table>
-  </body>
-</html>
+                <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+                  <img src="images/newtongen_teaser.gif" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+                </td>
+                <td style="padding:2.5%;width:75%;vertical-align:middle">
+                  <span class="papertitle">NewtonGen: Physics-Consistent and Controllable Text-to-Video Generation via Neural Newtonian Dynamics</span><br><br>
+                  <strong>Yu Yuan</strong>, Xijun Wang, Tharindu Wickremasinghe, Zeeshan Nadir, Bole Ma, Stanley H. Chan<br>
+                  <em>Under Review</em><br>
+                  <a href="https://yuyuan-space.github.io/NewtonGen/"> proj</a> /
+                  <a href="https://arxiv.org/abs/2509.21309"> arXiv</a> /
+                  <a href="https://github.com/pandayuanyu/NewtonGen">> code</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
