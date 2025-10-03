@@ -113,7 +113,7 @@
               <tr onmouseover="gen_photo_start()" onmouseout="gen_photo()">
                 <td style="padding:16px;width:20%;vertical-align:middle;">
                   <div class="two" id="gen_photo">
-                    <img src="./images/generative-photography.gif" width="160">
+                    <img src="images/generative-photography.gif" width="160">
                   </div>
                   <script type="text/javascript">
                     function gen_photo() {
@@ -140,6 +140,80 @@
               </tr>
             </tbody>
           </table>
+
+
+              <!-- Project: StarDiffusion -->
+              <tr onmouseover="gen_photo_start()" onmouseout="gen_photo()">
+                <td style="padding:16px;width:20%;vertical-align:middle;">
+                  <div class="two" id="gen_photo">
+                    <img src="./images/StarDiffusion.png" width="160">
+                  </div>
+                  <script type="text/javascript">
+                    function gen_photo() {
+                      document.getElementById('gen_photo').style.opacity = "0";
+                    }
+                    gen_photo();
+                  </script>
+                </td>
+                <td style="padding:8px;width:80%;vertical-align:middle;">
+                  <a href="https://arxiv.org/abs/2412.02168">
+                    <span class="papertitle">Learning to Kindle the Starlight</span>
+                  </a>
+                  <br>
+                  <strong>Yu Yuan</strong>, Jiaqi Wu, Lindong Wang, Zhongliang Jing, Henry Leung, Shuyuan Zhu, Han Pan
+                  <br>
+                  <em>arXiv 2023</strong>
+                  <br>
+                  <a href="https://arxiv.org/abs/2211.09206">arXiv</a> /
+                  <a href="https://github.com/pandayuanyu/StarDiffusion">code</a> /
+                  <a href="https://huggingface.co/datasets/pandaphd/Star_Field_Image_Enhancement_Benchmark">dataset</a> 
+              </tr>
+            </tbody>
+          </table>
+
+
+          <!-- Category: Computational Photography -->
+          <table style="width:100%;margin:auto;border:0;border-spacing:0;border-collapse:separate;">
+            <tbody>
+              <tr>
+                <td style="padding:36px 16px 4px 16px;">
+                  <h2 style="font-size:1.45em;color:#ff6f61;">Computational Photography</h2>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+
+          <!-- Project: Generative Photography -->
+          <table style="width:100%;margin:auto;border:0;border-spacing:0 10px;border-collapse:separate;">
+            <tbody>
+              <tr onmouseover="newton_gen_start()" onmouseout="newton_gen()">
+                <td style="padding:16px;width:20%;vertical-align:middle;">
+                  <div class="two" id="newton_gen">
+                    <img src="images/newtongen_teaser.gif" width="160">
+                  </div>
+                  <script type="text/javascript">
+                    function newton_gen() {
+                      document.getElementById('newton_gen').style.opacity = "0";
+                    }
+                    newton_gen();
+                  </script>
+                </td>
+                <td style="padding:8px;width:80%;vertical-align:middle;">
+                  <a href="https://arxiv.org/abs/2509.21309">
+                    <span class="papertitle">NewtonGen: Physics-Consistent and Controllable Text-to-Video Generation via Neural Newtonian Dynamics</span>
+                  </a>
+                  <br>
+                  <strong>Yu Yuan</strong>, Xijun Wang, Tharindu Wickremasinghe, Zeeshan Nadir, Bole Ma, Stanley H. Chan
+                  <br>
+                  <em>Under Review</em>
+                  <br>
+                  <a href="https://yuyuan-space.github.io/NewtonGen/">proj</a> /
+                  <a href="https://arxiv.org/abs/2509.21309">arXiv</a> /
+                  <a href="https://github.com/pandayuanyu/NewtonGen">code</a>
+                </td>
+              </tr>
+
 
 
 
