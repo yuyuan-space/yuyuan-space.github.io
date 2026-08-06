@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07111d">
+<title>Yu Yuan — Research Journey</title>
+<meta name="description" content="Yu Yuan's research toward physics-consistent and controllable generative worlds.">
+<style>
+  :root {
+    --bg: #07111d;
+    --bg-soft: #0c1b2a;
+    --ink: #f7f8f4;
+    --muted: #aab8c5;
+    --line: rgba(255,255,255,.13);
+    --glass: rgba(255,255,255,.065);
+    --cyan: #70e1d0;
+    --blue: #77a9ff;
+    --gold: #f4bd73;
+    --coral: #ff897d;
+    --shadow: 0 28px 90px rgba(0,0,0,.38);
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  html { background: var(--bg); }
+  body {
+    overflow: hidden;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at 14% 8%, rgba(119,169,255,.20), transparent 29%),
+      radial-gradient(circle at 86% 14%, rgba(112,225,208,.14), transparent 27%),
+      radial-gradient(circle at 55% 100%, rgba(244,189,115,.11), transparent 34%),
+      var(--bg);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .3;
+    background-image:
+      linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 46px 46px;
+    mask-image: linear-gradient(to bottom, black, transparent 88%);
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; }
+  :focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; }
+
+  .topbar {
+    position: fixed;
+    z-index: 20;
+    top: 18px;
+    left: clamp(20px, 3vw, 44px);
+    right: clamp(20px, 3vw, 44px);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+  .brand { color: rgba(255,255,255,.88); white-space: nowrap; }
+  .progress { flex: 1; height: 3px; overflow: hidden; border-radius: 99px; background: rgba(255,255,255,.11); }
+  .progress i { display: block; width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--cyan), var(--blue)); transition: width .35s ease; }
+  .deck { position: relative; width: 100vw; height: 100vh; perspective: 1500px; }
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+    padding: clamp(60px, 6vw, 92px) clamp(26px, 6vw, 92px) clamp(82px, 8vh, 104px);
+    opacity: 0;
+    transform: translate3d(0, 20px, -18px) scale(.988);
+    transition: opacity .34s ease, transform .34s ease;
+  }
+  .slide.active { display: grid; opacity: 1; transform: none; }
+  .safe { width: min(1380px, 100%); height: 100%; margin: auto; display: grid; align-content: center; gap: clamp(18px, 3vh, 32px); }
+  .eyebrow { color: var(--cyan); font-size: clamp(12px, 1.05vw, 15px); font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+  h1, h2, h3, p { margin: 0; }
+  h1 { max-width: 1220px; font-size: clamp(50px, 7.4vw, 106px); line-height: .94; letter-spacing: -.064em; }
+  h2 { max-width: 1150px; font-size: clamp(38px, 5.1vw, 76px); line-height: .99; letter-spacing: -.052em; }
+  h3 { font-size: clamp(21px, 2vw, 31px); line-height: 1.08; letter-spacing: -.028em; }
+  p { max-width: 920px; color: var(--muted); font-size: clamp(16px, 1.45vw, 22px); line-height: 1.48; }
+  strong { color: var(--ink); }
+  .lede { color: rgba(255,255,255,.88); font-size: clamp(20px, 2.25vw, 34px); line-height: 1.3; letter-spacing: -.026em; }
+  .accent { color: var(--cyan); }
+  .dim { color: rgba(255,255,255,.42); }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .button, .nav button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 43px;
+    padding: 10px 16px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink);
+    background: rgba(255,255,255,.075);
+    box-shadow: 0 12px 34px rgba(0,0,0,.18);
+    backdrop-filter: blur(14px);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 760;
+    transition: transform .2s ease, background .2s ease, border-color .2s ease;
+  }
+  .button:hover, .nav button:hover { transform: translateY(-2px); background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.27); }
+  .button.primary { color: #07111d; border-color: transparent; background: var(--cyan); }
+  .button.primary:hover { background: #96eee2; }
+  .hint { color: rgba(255,255,255,.46); font-size: 12px; letter-spacing: .04em; }
+  .glass { border: 1px solid var(--line); border-radius: 26px; background: linear-gradient(155deg, rgba(255,255,255,.10), rgba(255,255,255,.04)); box-shadow: var(--shadow); }
+  .split { display: grid; grid-template-columns: minmax(0, .92fr) minmax(420px, 1.08fr); gap: clamp(28px, 4vw, 64px); align-items: center; }
+  .copy { display: grid; gap: 18px; align-content: center; }
+  .figure-wrap { position: relative; padding: 12px; }
+  .figure-wrap::after { content: ""; position: absolute; inset: 12px; border-radius: 18px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); pointer-events: none; }
+  .figure { display: block; width: 100%; max-height: 58vh; object-fit: contain; border-radius: 18px; background: #fff; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; color: rgba(255,255,255,.72); background: rgba(255,255,255,.045); font-size: 12px; font-weight: 700; }
+  .project-no { color: rgba(255,255,255,.30); font-size: 13px; font-weight: 850; letter-spacing: .15em; }
+  .project-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .project-points div { padding: 13px 14px; border-left: 2px solid rgba(112,225,208,.42); background: rgba(255,255,255,.035); }
+  .project-points small { display: block; margin-bottom: 5px; color: var(--cyan); font-size: 10px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+  .project-points span { color: rgba(255,255,255,.78); font-size: 13px; line-height: 1.35; }
+  .bridge { padding-left: 14px; border-left: 2px solid var(--gold); color: rgba(255,255,255,.70); font-size: 13px; line-height: 1.45; }
+  .bridge b { color: var(--gold); text-transform: uppercase; letter-spacing: .08em; font-size: 10px; }
+
+  .question { display: grid; gap: clamp(26px, 5vh, 50px); text-align: center; justify-items: center; }
+  .question h2 { max-width: 1180px; }
+  .axes { display: grid; width: min(1040px, 100%); grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .axis { padding: 18px 12px; border: 1px solid var(--line); border-radius: 20px; background: rgba(255,255,255,.055); }
+  .axis b { display: block; margin-bottom: 4px; font-size: clamp(18px, 2vw, 27px); }
+  .axis span { color: var(--muted); font-size: 12px; }
+
+  .map-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; }
+  .map-head p { max-width: 430px; font-size: 15px; }
+  .map { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .map-card {
+    position: relative;
+    min-height: clamp(225px, 30vh, 320px);
+    overflow: hidden;
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-radius: 25px;
+    background: rgba(255,255,255,.06);
+    box-shadow: 0 22px 65px rgba(0,0,0,.22);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform .23s ease, background .23s ease, border-color .23s ease;
+  }
+  .map-card::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .55; background: radial-gradient(circle at 90% 0%, var(--glow), transparent 44%); }
+  .map-card::after { content: "→"; position: absolute; right: 18px; bottom: 14px; color: var(--cyan); font-size: 24px; opacity: 0; transform: translateX(-8px); transition: .23s ease; }
+  .map-card:hover { transform: translateY(-6px); background: rgba(255,255,255,.105); border-color: rgba(255,255,255,.25); }
+  .map-card:hover::after { opacity: 1; transform: none; }
+  .map-card small { color: var(--cyan); font-size: 10px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+  .map-card .venue { display: inline-block; margin-top: 8px; color: var(--gold); font-size: 11px; font-weight: 800; letter-spacing: .04em; }
+  .map-card .step { color: rgba(255,255,255,.30); font-size: 42px; font-weight: 300; }
+  .map-card p { margin-top: 10px; font-size: 14px; line-height: 1.4; }
+  .map-card .unlock { margin-top: 16px; color: rgba(255,255,255,.75); font-size: 12px; font-weight: 750; }
+  .map-card:nth-child(1) { --glow: rgba(255,137,125,.42); }
+  .map-card:nth-child(2) { --glow: rgba(244,189,115,.42); }
+  .map-card:nth-child(3) { --glow: rgba(119,169,255,.42); }
+  .map-card:nth-child(4) { --glow: rgba(112,225,208,.42); }
+  .map-arrow { display: none; }
+
+  .nav { position: fixed; z-index: 30; right: clamp(18px, 3vw, 44px); bottom: 22px; display: flex; gap: 8px; }
+  .nav button { width: 43px; padding: 0; font-size: 17px; }
+  .nav #mapButton { width: auto; padding: 0 15px; font-size: 12px; }
+  .footer-note { position: fixed; z-index: 20; left: clamp(20px, 3vw, 44px); bottom: 28px; color: rgba(255,255,255,.33); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+
+  @media (max-width: 980px) {
+    body { overflow: auto; }
+    .deck { min-height: 100vh; height: auto; }
+    .slide { position: relative; min-height: 100vh; height: auto; overflow: auto; }
+    .slide:not(.active) { display: none; }
+    .safe { height: auto; min-height: calc(100vh - 142px); }
+    .split { grid-template-columns: 1fr; }
+    .split { align-content: start; }
+    .figure { max-height: 40vh; }
+    .map { grid-template-columns: 1fr 1fr; }
+    .project-points { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .topbar { top: 12px; }
+    .brand { display: none; }
+    .slide { padding: 56px 18px 92px; }
+    .axes, .map { grid-template-columns: 1fr; }
+    .map-head { display: grid; }
+    .map-card { min-height: 190px; }
+    .footer-note { display: none; }
+    .nav { right: 14px; bottom: 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+  }
+</style>
+</head>
+<body>
+<div class="topbar" aria-hidden="true">
+  <span class="brand">Yu Yuan · Physics-consistent Generative Worlds</span>
+  <div class="progress"><i id="bar"></i></div>
+  <span id="count">01 / 08</span>
+</div>
+
+<main class="deck" id="deck">
+  <section class="slide" data-route="home" aria-label="Introduction">
+    <div class="safe">
+      <div class="eyebrow">Yu Yuan · Research overview</div>
+      <h1>Toward <span class="accent">physics-consistent</span> and controllable generative worlds.</h1>
+      <p class="lede">Generative models should model worlds—not just pixels.</p>
+      <div class="actions">
+        <a class="button primary" href="#mission">Overview&nbsp; →</a>
+        <a class="button" href="#map">Research map</a>
+        <a class="button" href="../">Homepage ↗</a>
+      </div>
+      <p class="hint">Navigate with ← →, Space, or swipe · Press M for the map</p>
+    </div>
+  </section>
+
+  <section class="slide" data-route="mission" aria-label="Research mission">
+    <div class="safe question">
+      <div class="eyebrow">The core research question</div>
+      <h2>How can we build <span class="accent">physics-consistent and controllable generative worlds?</span></h2>
+      <p class="lede">Consistent across camera, time, and space. Controllable through conditions, goals, and constraints.</p>
+      <div class="axes">
+        <div class="axis"><b>Camera</b><span>physics-consistent image formation</span></div>
+        <div class="axis"><b>Time</b><span>controllable physical dynamics</span></div>
+        <div class="axis"><b>Space</b><span>consistent 4D world completion</span></div>
+        <div class="axis"><b>Action</b><span>control under goals and constraints</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-route="philosophy" aria-label="Research philosophy">
+    <div class="safe question">
+      <div class="eyebrow">One research program</div>
+      <h2><span class="accent">Consistency</span> defines what a world is. <span class="accent">Control</span> defines what we can do with it.</h2>
+      <p class="lede">Observe. Evolve. Complete. Steer—without breaking the world.</p>
+      <div class="axes">
+        <div class="axis"><b>Observe</b><span>Control the camera without breaking the scene.</span></div>
+        <div class="axis"><b>Evolve</b><span>Control motion without breaking physical law.</span></div>
+        <div class="axis"><b>Complete</b><span>Generate unseen space-time without breaking the world.</span></div>
+        <div class="axis"><b>Steer</b><span>Control the future without breaking its constraints.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-route="map" aria-label="Interactive research map">
+    <div class="safe">
+      <div class="map-head">
+        <div>
+          <div class="eyebrow">Interactive research map</div>
+          <h2>Four steps toward physics-consistent and controllable generative worlds.</h2>
+        </div>
+        <p>One core problem, expanded from camera control to an entire generated future.</p>
+      </div>
+      <div class="map">
+        <a class="map-card" href="#genphoto">
+          <div><span class="step">01</span><small>Observation · Space × camera</small><h3>Generative Photography</h3><span class="venue">CVPR 2025 Highlight</span><p>Change the camera, preserve the scene.</p></div>
+          <div class="unlock">Camera-physics consistency and control</div>
+        </a>
+        <a class="map-card" href="#newtongen">
+          <div><span class="step">02</span><small>Law · Time × physics</small><h3>NewtonGen</h3><span class="venue">ICLR 2026</span><p>Generate motion that follows physical laws.</p></div>
+          <div class="unlock">Motion-physics consistency and control</div>
+        </a>
+        <a class="map-card" href="#seeu">
+          <div><span class="step">03</span><small>Existence · Space × time</small><h3>SeeU</h3><span class="venue">CVPR 2026</span><p>Generate the world beyond observed space-time.</p></div>
+          <div class="unlock">Space-time consistency and generation</div>
+        </a>
+        <a class="map-card" href="#optiworld">
+          <div><span class="step">04</span><small>Agency · Action × constraints</small><h3>OptiWorld</h3><span class="venue">Under Review</span><p>Choose a better future under constraints.</p></div>
+          <div class="unlock">Goal-directed control under constraints</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-route="genphoto" aria-label="Generative Photography">
+    <div class="safe split">
+      <div class="copy">
+        <div class="project-no">01 / 04</div>
+        <div class="eyebrow">Generative Photography · CVPR 2025 Highlight</div>
+        <h2>Control the camera, preserve the world.</h2>
+        <p>Control focal length, bokeh, shutter speed, and color temperature while preserving scene identity.</p>
+        <div class="project-points">
+          <div><small>Problem</small><span>Camera prompts do not obey optics.</span></div>
+          <div><small>Idea</small><span>Jointly model a scene across camera settings.</span></div>
+          <div><small>Result</small><span>Controllable effects with stronger scene consistency.</span></div>
+        </div>
+        <p class="bridge"><b>Core role</b> Camera-physics consistency and control → physical motion.</p>
+        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/GenerativePhotography/" target="_blank" rel="noopener">Project page ↗</a><a class="button" href="#map">Back to map</a></div>
+      </div>
+      <div class="figure-wrap glass"><img class="figure" src="genphoto_pipeline.png" alt="Generative Photography camera-control pipeline"></div>
+    </div>
+  </section>
+
+  <section class="slide" data-route="newtongen" aria-label="NewtonGen">
+    <div class="safe split">
+      <div class="copy">
+        <div class="project-no">02 / 04</div>
+        <div class="eyebrow">NewtonGen · ICLR 2026</div>
+        <h2>Give video generation a sense of physics.</h2>
+        <p>Learn Neural Newtonian Dynamics, then guide video generation with explicit physical states.</p>
+        <div class="project-points">
+          <div><small>Problem</small><span>Video models imitate motion without understanding it.</span></div>
+          <div><small>Idea</small><span>Linear neural ODEs plus a residual model.</span></div>
+          <div><small>Result</small><span>Diverse motion with explicit parameter control.</span></div>
+        </div>
+        <p class="bridge"><b>Core role</b> Motion-physics consistency and control → complete 4D worlds.</p>
+        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/NewtonGen/" target="_blank" rel="noopener">Project page ↗</a><a class="button" href="#map">Back to map</a></div>
+      </div>
+      <div class="figure-wrap glass"><img class="figure" src="newtongen_framework.png" alt="NewtonGen framework"></div>
+    </div>
+  </section>
+
+  <section class="slide" data-route="seeu" aria-label="SeeU">
+    <div class="safe split">
+      <div class="copy">
+        <div class="project-no">03 / 04</div>
+        <div class="eyebrow">SeeU · CVPR 2026</div>
+        <h2>See beyond the observed time and space.</h2>
+        <p>Lift sparse 2D observations into a continuous 4D world across unseen times and viewpoints.</p>
+        <div class="project-points">
+          <div><small>Problem</small><span>Observations are sparse in both time and viewpoint.</span></div>
+          <div><small>Idea</small><span>Couple continuous dynamics with a 4D world model.</span></div>
+          <div><small>Result</small><span>Temporal, spatial, and edited unseen-world generation.</span></div>
+        </div>
+        <p class="bridge"><b>Core role</b> Space-time consistency and control → goal-directed futures.</p>
+        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/SeeU/" target="_blank" rel="noopener">Project page ↗</a><a class="button" href="#map">Back to map</a></div>
+      </div>
+      <div class="figure-wrap glass"><img class="figure" src="seeu_prelim.png" alt="SeeU continuous 4D world overview"></div>
+    </div>
+  </section>
+
+  <section class="slide" data-route="optiworld" aria-label="OptiWorld">
+    <div class="safe split">
+      <div class="copy">
+        <div class="project-no">04 / 04</div>
+        <div class="eyebrow">OptiWorld · Under Review</div>
+        <h2>Plan a better future, then render it.</h2>
+        <p>Optimize goal-directed trajectories under physical constraints before rendering the future.</p>
+        <div class="project-points">
+          <div><small>Problem</small><span>Plausible futures can still be unsafe or inefficient.</span></div>
+          <div><small>Idea</small><span>Optimize trajectories before video synthesis.</span></div>
+          <div><small>Result</small><span>Goal-conditioned and counterfactual world generation.</span></div>
+        </div>
+        <p class="bridge"><b>Core role</b> Unite physical consistency with explicit control over the generated future.</p>
+        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/OptiWorld/" target="_blank" rel="noopener">Project page ↗</a><a class="button" href="#map">Back to map</a></div>
+      </div>
+      <div class="figure-wrap glass"><img class="figure" src="optiworld_teaser.png" alt="OptiWorld optimal-control overview"></div>
+    </div>
+  </section>
+
+</main>
+
+<div class="footer-note">Interactive interview deck</div>
+<nav class="nav" aria-label="Slide navigation">
+  <button id="mapButton" type="button" aria-label="Open research map">Map</button>
+  <button id="prev" type="button" aria-label="Previous slide">←</button>
+  <button id="next" type="button" aria-label="Next slide">→</button>
+</nav>
+
+<script>
+(() => {
+  const slides = [...document.querySelectorAll('.slide')];
+  const routes = slides.map(slide => slide.dataset.route);
+  const bar = document.getElementById('bar');
+  const count = document.getElementById('count');
+  let index = 0;
+  let startX = null;
+
+  const routeFromUrl = () => {
+    const query = new URLSearchParams(location.search);
+    return query.get('slide') || decodeURIComponent(location.hash.replace(/^#\/?/, '')).trim() || 'home';
+  };
+
+  const go = (target, updateUrl = true) => {
+    if (typeof target === 'string') {
+      const found = routes.indexOf(target);
+      index = found >= 0 ? found : 0;
+    } else {
+      index = Math.min(Math.max(target, 0), slides.length - 1);
+    }
+    slides.forEach((slide, slideIndex) => {
+      const active = slideIndex === index;
+      slide.classList.toggle('active', active);
+      slide.setAttribute('aria-hidden', String(!active));
+      if (active) slide.scrollTop = 0;
+    });
+    bar.style.width = `${((index + 1) / slides.length * 100).toFixed(2)}%`;
+    count.textContent = `${String(index + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+    document.getElementById('prev').disabled = index === 0;
+    document.getElementById('next').disabled = index === slides.length - 1;
+    if (updateUrl && location.hash !== `#${routes[index]}`) history.pushState(null, '', `#${routes[index]}`);
+  };
+
+  addEventListener('hashchange', () => go(routeFromUrl(), false));
+  addEventListener('popstate', () => go(routeFromUrl(), false));
+  document.getElementById('prev').addEventListener('click', () => go(index - 1));
+  document.getElementById('next').addEventListener('click', () => go(index + 1));
+  document.getElementById('mapButton').addEventListener('click', () => go('map'));
+  document.addEventListener('keydown', event => {
+    if (event.metaKey || event.ctrlKey || event.altKey) return;
+    if (['ArrowRight', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); go(index + 1); }
+    if (['ArrowLeft', 'PageUp', 'Backspace'].includes(event.key)) { event.preventDefault(); go(index - 1); }
+    if (event.key.toLowerCase() === 'm') go('map');
+    if (event.key === 'Home') go(0);
+    if (event.key === 'End') go(slides.length - 1);
+  });
+  addEventListener('pointerdown', event => { startX = event.clientX; });
+  addEventListener('pointerup', event => {
+    if (startX === null) return;
+    const delta = event.clientX - startX;
+    if (Math.abs(delta) > 80) go(index + (delta < 0 ? 1 : -1));
+    startX = null;
+  });
+
+  go(routeFromUrl(), false);
+})();
+</script>
+</body>
+</html>
