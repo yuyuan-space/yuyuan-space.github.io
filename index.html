@@ -622,12 +622,25 @@
                 Cool sites from <a style="font-size:small;" href="https://jonbarron.info">Jon Barron's website.</a>
                 Thanks for <a style="font-size:small;" href="https://leonidk.com/">Leonid Keselman</a>'s Jekyll template
               </p>
+              <p style="text-align:center;font-size:11px;color:#aaa;margin:8px 0 18px;">
+                Last updated: <time id="last-updated"></time>
+              </p>
             </td>
           </tr>
         </table>
 
+        <script>
+          (() => {
+            const target = document.getElementById('last-updated');
+            const modified = new Date(document.lastModified);
+            if (!target || Number.isNaN(modified.getTime())) return;
+            target.dateTime = modified.toISOString();
+            target.textContent = new Intl.DateTimeFormat('en-US', {
+              dateStyle: 'medium',
+              timeStyle: 'short'
+            }).format(modified);
+          })();
+        </script>
 
 </html>
-
-
 
