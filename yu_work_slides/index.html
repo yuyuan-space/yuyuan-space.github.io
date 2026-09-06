@@ -119,6 +119,12 @@
   .figure-wrap { position: relative; padding: 12px; }
   .figure-wrap::after { content: ""; position: absolute; inset: 12px; border-radius: 18px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); pointer-events: none; }
   .figure { display: block; width: 100%; max-height: 58vh; object-fit: contain; border-radius: 18px; background: #fff; }
+  .media-grid { display: grid; width: 100%; overflow: hidden; gap: 4px; border-radius: 18px; background: #fff; }
+  .media-grid img, .media-grid video { display: block; width: 100%; height: 100%; min-width: 0; object-fit: contain; background: #fff; }
+  .media-grid.genphoto-grid { grid-template-columns: repeat(2, 1fr); aspect-ratio: 3 / 2; }
+  .media-grid.newtongen-grid { grid-template-columns: repeat(2, 1fr); aspect-ratio: 4 / 1; }
+  .media-grid.seeu-grid { grid-template-columns: 4fr 4fr 2fr; aspect-ratio: 3.6 / 1; }
+  .media-grid.optiworld-grid { grid-template-columns: repeat(2, 1fr); aspect-ratio: 3 / 1; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .chip { padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; color: rgba(255,255,255,.72); background: rgba(255,255,255,.045); font-size: 12px; font-weight: 700; }
   .project-no { color: rgba(255,255,255,.30); font-size: 13px; font-weight: 850; letter-spacing: .15em; }
@@ -129,41 +135,56 @@
 
   .question { display: grid; gap: clamp(26px, 5vh, 50px); text-align: center; justify-items: center; }
   .question h2 { max-width: 1180px; }
-  .axes { display: grid; width: min(1040px, 100%); grid-template-columns: repeat(4, 1fr); gap: 12px; }
-  .axis { padding: 18px 12px; border: 1px solid var(--line); border-radius: 20px; background: rgba(255,255,255,.055); }
-  .axis b { display: block; margin-bottom: 4px; font-size: clamp(18px, 2vw, 27px); }
-  .axis span { color: var(--muted); font-size: 12px; }
-
-  .map-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; }
-  .map { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-  .map-card {
-    position: relative;
-    min-height: clamp(225px, 30vh, 320px);
-    overflow: hidden;
-    padding: 22px;
-    border: 1px solid var(--line);
-    border-radius: 25px;
-    background: rgba(255,255,255,.06);
-    box-shadow: 0 22px 65px rgba(0,0,0,.22);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform .23s ease, background .23s ease, border-color .23s ease;
+  .overview { gap: clamp(22px, 3.5vh, 36px); }
+  .overview-intro { display: grid; gap: 10px; }
+  .overview-intro h2 { max-width: 1120px; font-size: clamp(36px, 4.6vw, 66px); }
+  .overview-intro .lede { max-width: 1160px; font-size: clamp(18px, 1.8vw, 27px); }
+  .timeline { position: relative; display: grid; width: 100%; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 2vw, 28px); }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 27px;
+    left: 12.5%;
+    right: 12.5%;
+    height: 4px;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--coral), var(--gold), var(--blue), var(--cyan));
+    box-shadow: 0 0 28px rgba(112,225,208,.24);
   }
-  .map-card::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .55; background: radial-gradient(circle at 90% 0%, var(--glow), transparent 44%); }
-  .map-card::after { content: "→"; position: absolute; right: 18px; bottom: 14px; color: var(--cyan); font-size: 24px; opacity: 0; transform: translateX(-8px); transition: .23s ease; }
-  .map-card:hover { transform: translateY(-6px); background: rgba(255,255,255,.105); border-color: rgba(255,255,255,.25); }
-  .map-card:hover::after { opacity: 1; transform: none; }
-  .map-card small { color: var(--cyan); font-size: 10px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
-  .map-card .venue { display: inline-block; margin-top: 8px; color: var(--gold); font-size: 11px; font-weight: 800; letter-spacing: .04em; }
-  .map-card .step { color: rgba(255,255,255,.30); font-size: 42px; font-weight: 300; }
-  .map-card p { margin-top: 10px; font-size: 14px; line-height: 1.4; }
-  .map-card .unlock { margin-top: 16px; color: rgba(255,255,255,.75); font-size: 12px; font-weight: 750; }
-  .map-card:nth-child(1) { --glow: rgba(255,137,125,.42); }
-  .map-card:nth-child(2) { --glow: rgba(244,189,115,.42); }
-  .map-card:nth-child(3) { --glow: rgba(119,169,255,.42); }
-  .map-card:nth-child(4) { --glow: rgba(112,225,208,.42); }
-  .map-arrow { display: none; }
+  .milestone {
+    --tone: var(--cyan);
+    position: relative;
+    z-index: 1;
+    display: grid;
+    justify-items: center;
+    gap: 9px;
+    padding: 0 8px;
+    text-align: center;
+    transition: transform .22s ease;
+  }
+  .milestone:hover { transform: translateY(-5px); }
+  .milestone:nth-child(1) { --tone: var(--coral); }
+  .milestone:nth-child(2) { --tone: var(--gold); }
+  .milestone:nth-child(3) { --tone: var(--blue); }
+  .milestone:nth-child(4) { --tone: var(--cyan); }
+  .milestone-dot {
+    display: grid;
+    width: 58px;
+    height: 58px;
+    place-items: center;
+    border: 2px solid var(--tone);
+    border-radius: 50%;
+    color: #07111d;
+    background: var(--tone);
+    box-shadow: 0 0 0 8px rgba(7,17,29,.92), 0 12px 34px rgba(0,0,0,.32);
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: .08em;
+  }
+  .milestone h3 { margin-top: 8px; font-size: clamp(19px, 1.75vw, 27px); }
+  .milestone-meta { color: var(--tone); font-size: 10px; font-weight: 850; letter-spacing: .11em; text-transform: uppercase; }
+  .milestone-venue { color: rgba(255,255,255,.62); font-size: 11px; font-weight: 750; letter-spacing: .035em; }
+  .milestone p { max-width: 250px; font-size: 13px; line-height: 1.42; }
 
   .nav { position: fixed; z-index: 30; right: clamp(18px, 3vw, 44px); bottom: 22px; display: flex; gap: 8px; }
   .nav button { width: 43px; padding: 0; font-size: 17px; }
@@ -178,16 +199,20 @@
     .split { grid-template-columns: 1fr; }
     .split { align-content: start; }
     .figure { max-height: 40vh; }
-    .map { grid-template-columns: 1fr 1fr; }
     .project-points { grid-template-columns: 1fr; }
   }
   @media (max-width: 640px) {
     .topbar { top: 12px; }
     .brand { display: none; }
     .slide { padding: 56px 18px 92px; }
-    .axes, .map { grid-template-columns: 1fr; }
-    .map-head { display: grid; }
-    .map-card { min-height: 190px; }
+    .timeline { grid-template-columns: 1fr; gap: 20px; }
+    .timeline::before { top: 29px; bottom: 29px; left: 27px; right: auto; width: 4px; height: auto; }
+    .milestone { grid-template-columns: 58px 1fr; grid-template-rows: auto auto auto auto; justify-items: start; column-gap: 14px; padding: 0; text-align: left; }
+    .milestone-dot { grid-column: 1; grid-row: 1 / 5; }
+    .milestone h3 { grid-column: 2; grid-row: 1; margin-top: 0; }
+    .milestone-meta { grid-column: 2; grid-row: 2; }
+    .milestone-venue { grid-column: 2; grid-row: 3; }
+    .milestone p { grid-column: 2; grid-row: 4; max-width: none; }
     .nav { right: 14px; bottom: 14px; }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -199,7 +224,7 @@
 <div class="topbar" aria-hidden="true">
   <span class="brand">Yu Yuan · Towards Physics-consistent and Controllable Generative Worlds</span>
   <div class="progress"><i id="bar"></i></div>
-  <span id="count">01 / 08</span>
+  <span id="count">01 / 07</span>
 </div>
 
 <main class="deck" id="deck">
@@ -210,7 +235,6 @@
       <p class="lede">Generative models should model worlds—not just pixels.</p>
       <div class="actions">
         <a class="button primary" href="#mission">Overview&nbsp; →</a>
-        <a class="button" href="#map">Research map</a>
         <a class="button" href="../">Homepage ↗</a>
       </div>
       <p class="hint">Navigate with ← →, Space, or swipe · M for map · F for full screen</p>
@@ -218,43 +242,40 @@
   </section>
 
   <section class="slide" data-route="mission" aria-label="Research mission">
-    <div class="safe question">
-      <div class="eyebrow">The core research question</div>
-      <h2>How can we build <span class="accent">physics-consistent and controllable generative worlds?</span></h2>
-      <p class="lede">Consistent across camera, time, and space. Controllable through conditions, goals, and constraints.</p>
-      <div class="axes">
-        <div class="axis"><b>Camera</b><span>physics-consistent image formation</span></div>
-        <div class="axis"><b>Time</b><span>controllable physical dynamics</span></div>
-        <div class="axis"><b>Space</b><span>consistent 4D world completion</span></div>
-        <div class="axis"><b>Action</b><span>control under goals and constraints</span></div>
+    <div class="safe overview">
+      <div class="overview-intro">
+        <div class="eyebrow">One question · Four perspectives</div>
+        <h2>World generation begins with the rules that make a world coherent.</h2>
+        <p class="lede">Can generative models follow physical rules across <span class="accent">camera, dynamics, space–time, and action?</span></p>
       </div>
-    </div>
-  </section>
-
-  <section class="slide" data-route="map" aria-label="Interactive research map">
-    <div class="safe">
-      <div class="map-head">
-        <div>
-          <div class="eyebrow">Interactive research map</div>
-          <h2>Four steps toward physics-consistent and controllable generative worlds.</h2>
-        </div>
-      </div>
-      <div class="map">
-        <a class="map-card" href="#genphoto">
-          <div><span class="step">01</span><small>Space × Camera</small><h3>Generative Photography</h3><span class="venue">CVPR 2025 Highlight</span><p>Change the camera, preserve the scene.</p></div>
-          <div class="unlock">Camera-physics consistency and control</div>
+      <div class="timeline">
+        <a class="milestone" href="#genphoto">
+          <span class="milestone-dot">01</span>
+          <h3>Generative Photography</h3>
+          <span class="milestone-meta">Camera</span>
+          <span class="milestone-venue">CVPR 2025 Highlight</span>
+          <p>Disentangle scene and camera for precise imaging control.</p>
         </a>
-        <a class="map-card" href="#newtongen">
-          <div><span class="step">02</span><small>Time × Physics</small><h3>NewtonGen</h3><span class="venue">ICLR 2026</span><p>Generate motion that follows physical laws.</p></div>
-          <div class="unlock">Motion-physics consistency and control</div>
+        <a class="milestone" href="#newtongen">
+          <span class="milestone-dot">02</span>
+          <h3>NewtonGen</h3>
+          <span class="milestone-meta">Dynamics</span>
+          <span class="milestone-venue">ICLR 2026</span>
+          <p>Model latent physical dynamics to guide controllable motion.</p>
         </a>
-        <a class="map-card" href="#seeu">
-          <div><span class="step">03</span><small>Space × Time</small><h3>SeeU</h3><span class="venue">CVPR 2026</span><p>Generate the world beyond observed space-time.</p></div>
-          <div class="unlock">Space-time consistency and generation</div>
+        <a class="milestone" href="#seeu">
+          <span class="milestone-dot">03</span>
+          <h3>SeeU</h3>
+          <span class="milestone-meta">Space–time</span>
+          <span class="milestone-venue">CVPR 2026</span>
+          <p>Lift sparse observations into continuous 4D dynamics.</p>
         </a>
-        <a class="map-card" href="#optiworld">
-          <div><span class="step">04</span><small>Action × Constraints</small><h3>OptiWorld</h3><span class="venue">Under Review</span><p>Choose a better future under constraints.</p></div>
-          <div class="unlock">Goal-directed control under constraints</div>
+        <a class="milestone" href="#optiworld">
+          <span class="milestone-dot">04</span>
+          <h3>OptiWorld</h3>
+          <span class="milestone-meta">Action</span>
+          <span class="milestone-venue">Under Review</span>
+          <p>Optimize trajectories before rendering future motion.</p>
         </a>
       </div>
     </div>
@@ -266,7 +287,7 @@
         <div class="project-no">01 / 04</div>
         <div class="eyebrow">Generative Photography · CVPR 2025 Highlight</div>
         <h2>Control the camera, preserve the world.</h2>
-        <p>Control focal length, bokeh, shutter speed, and color temperature while preserving scene identity.</p>
+        <p>Control bokeh, focal length, shutter speed, and color temperature while preserving scene identity.</p>
         <div class="project-points">
           <div><small>Problem</small><span>Camera prompts do not obey optics.</span></div>
           <div><small>Idea</small><span>Dimensional lifting disentangles scene and camera; differentiated parameter injection enables fine-grained control.</span></div>
@@ -274,7 +295,14 @@
         </div>
         <div class="actions"><a class="button primary" href="https://yuyuanspace.com/GenerativePhotography/" target="_blank" rel="noopener">Project page ↗</a><a class="button" href="#map">Back to map</a></div>
       </div>
-      <div class="figure-wrap glass"><img class="figure" src="genphoto_pipeline.png" alt="Generative Photography camera-control pipeline"></div>
+      <div class="figure-wrap glass">
+        <div class="media-grid genphoto-grid" aria-label="Generative Photography camera-control results">
+          <img src="https://yuyuanspace.com/GenerativePhotography/static/videos/bokeh_rendering/0_desserts_Our.gif" alt="Bokeh rendering result">
+          <img src="https://yuyuanspace.com/GenerativePhotography/static/videos/focal_length/0_office_Our.gif" alt="Focal length control result">
+          <img src="https://yuyuanspace.com/GenerativePhotography/static/videos/shutter_speed/4_kitchen_Our.gif" alt="Shutter speed control result">
+          <img src="https://yuyuanspace.com/GenerativePhotography/static/videos/color_temperature/0_room_Our.gif" alt="Color temperature control result">
+        </div>
+      </div>
     </div>
   </section>
 
@@ -292,7 +320,12 @@
         </div>
         <div class="actions"><a class="button primary" href="https://yuyuanspace.com/NewtonGen/" target="_blank" rel="noopener">Project page ↗</a><a class="button" href="#map">Back to map</a></div>
       </div>
-      <div class="figure-wrap glass"><img class="figure" src="newtongen_framework.png" alt="NewtonGen framework"></div>
+      <div class="figure-wrap glass">
+        <div class="media-grid newtongen-grid" aria-label="NewtonGen physics-consistent motion results">
+          <img src="https://yuyuanspace.com/NewtonGen/static/images/teaser_a.gif" alt="NewtonGen supported dynamics">
+          <img src="https://yuyuanspace.com/NewtonGen/static/images/teaser_b.gif" alt="NewtonGen controllable generation results">
+        </div>
+      </div>
     </div>
   </section>
 
@@ -310,7 +343,13 @@
         </div>
         <div class="actions"><a class="button primary" href="https://yuyuanspace.com/SeeU/" target="_blank" rel="noopener">Project page ↗</a><a class="button" href="#map">Back to map</a></div>
       </div>
-      <div class="figure-wrap glass"><img class="figure" src="seeu_prelim.png" alt="SeeU continuous 4D world overview"></div>
+      <div class="figure-wrap glass">
+        <div class="media-grid seeu-grid" aria-label="SeeU unseen world generation results">
+          <video autoplay loop muted playsinline preload="metadata" aria-label="SeeU unseen temporal generation"><source src="https://yuyuanspace.com/SeeU/static/videos/teaser/teaser_time.mp4" type="video/mp4"></video>
+          <video autoplay loop muted playsinline preload="metadata" aria-label="SeeU unseen spatial generation"><source src="https://yuyuanspace.com/SeeU/static/videos/teaser/teaser_space.mp4" type="video/mp4"></video>
+          <video autoplay loop muted playsinline preload="metadata" aria-label="SeeU video editing"><source src="https://yuyuanspace.com/SeeU/static/videos/teaser/teaser_edit.mp4" type="video/mp4"></video>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -328,7 +367,12 @@
         </div>
         <div class="actions"><a class="button primary" href="https://yuyuanspace.com/OptiWorld/" target="_blank" rel="noopener">Project page ↗</a><a class="button" href="#map">Back to map</a></div>
       </div>
-      <div class="figure-wrap glass"><img class="figure" src="optiworld_teaser.png" alt="OptiWorld optimal-control overview"></div>
+      <div class="figure-wrap glass">
+        <div class="media-grid optiworld-grid" aria-label="OptiWorld controlled video generation results">
+          <img src="../images/OptiWorld.gif" alt="OptiWorld research teaser">
+          <video autoplay loop muted playsinline preload="metadata" aria-label="OptiWorld goal-conditioned image-to-video Case 6"><source src="https://yuyuanspace.com/OptiWorld/static/videos/optiworld/image_goal_conditioned_I2V/comparison_6/OptiWorld.mp4" type="video/mp4"></video>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -347,7 +391,7 @@
 
 <nav class="nav" aria-label="Slide navigation">
   <button id="fullscreenButton" type="button" aria-label="Enter full screen">Full screen</button>
-  <button id="mapButton" type="button" aria-label="Open research map">Map</button>
+  <button id="mapButton" type="button" aria-label="Open research overview">Overview</button>
   <button id="prev" type="button" aria-label="Previous slide">←</button>
   <button id="next" type="button" aria-label="Next slide">→</button>
 </nav>
@@ -369,7 +413,8 @@
 
   const go = (target, updateUrl = true) => {
     if (typeof target === 'string') {
-      const found = routes.indexOf(target);
+      const normalizedTarget = target === 'map' ? 'mission' : target;
+      const found = routes.indexOf(normalizedTarget);
       index = found >= 0 ? found : 0;
     } else {
       index = Math.min(Math.max(target, 0), slides.length - 1);
@@ -391,7 +436,7 @@
   addEventListener('popstate', () => go(routeFromUrl(), false));
   document.getElementById('prev').addEventListener('click', () => go(index - 1));
   document.getElementById('next').addEventListener('click', () => go(index + 1));
-  document.getElementById('mapButton').addEventListener('click', () => go('map'));
+  document.getElementById('mapButton').addEventListener('click', () => go('mission'));
 
   const fullscreenElement = () => document.fullscreenElement || document.webkitFullscreenElement;
   const enterFullscreen = document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen;
@@ -416,7 +461,7 @@
     if (event.metaKey || event.ctrlKey || event.altKey) return;
     if (['ArrowRight', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); go(index + 1); }
     if (['ArrowLeft', 'PageUp', 'Backspace'].includes(event.key)) { event.preventDefault(); go(index - 1); }
-    if (event.key.toLowerCase() === 'm') go('map');
+    if (event.key.toLowerCase() === 'm') go('mission');
     if (event.key.toLowerCase() === 'f' && !fullscreenButton.hidden) toggleFullscreen();
     if (event.key === 'Home') go(0);
     if (event.key === 'End') go(slides.length - 1);
