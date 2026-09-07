@@ -114,31 +114,39 @@
   .button.primary:hover { background: #96eee2; }
   .hint { color: rgba(255,255,255,.46); font-size: 12px; letter-spacing: .04em; }
   .glass { border: 1px solid var(--line); border-radius: 26px; background: linear-gradient(155deg, rgba(255,255,255,.10), rgba(255,255,255,.04)); box-shadow: var(--shadow); }
-  .split { display: grid; grid-template-columns: minmax(0, .92fr) minmax(420px, 1.08fr); gap: clamp(28px, 4vw, 64px); align-items: center; }
-  .copy { display: grid; gap: 18px; align-content: center; }
+  .split { display: grid; grid-template-columns: 1fr; gap: clamp(12px, 2vh, 18px); align-content: center; }
+  .copy { display: grid; gap: 10px; align-content: center; }
+  .split h2 { max-width: none; font-size: clamp(36px, 3.8vw, 54px); line-height: .98; }
+  .split .copy > p { max-width: 1220px; font-size: clamp(15px, 1.25vw, 19px); line-height: 1.38; }
   .figure-wrap { position: relative; padding: 12px; }
   .figure-wrap::after { content: ""; position: absolute; inset: 12px; border-radius: 18px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); pointer-events: none; }
   .figure { display: block; width: 100%; max-height: 58vh; object-fit: contain; border-radius: 18px; background: #fff; }
   .media-grid { display: grid; width: 100%; overflow: hidden; gap: 4px; border-radius: 18px; background: #fff; }
   .media-grid img, .media-grid video { display: block; width: 100%; height: 100%; min-width: 0; object-fit: contain; background: #fff; }
-  .media-grid.genphoto-grid { grid-template-columns: repeat(2, 1fr); aspect-ratio: 3 / 2; }
+  .split > .figure-wrap { width: 100%; padding: 8px; border-radius: 20px; }
+  .split > .figure-wrap::after { inset: 8px; border-radius: 14px; }
+  .split .media-grid, .split .figure { height: clamp(155px, 30vh, 220px); max-height: 30vh; border-radius: 14px; }
+  .media-grid.genphoto-grid { grid-template-columns: repeat(4, 1fr); aspect-ratio: 6 / 1; }
   .media-grid.newtongen-grid { grid-template-columns: repeat(2, 1fr); aspect-ratio: 4 / 1; }
   .media-grid.seeu-grid { grid-template-columns: 4fr 4fr 2fr; aspect-ratio: 3.6 / 1; }
   .media-grid.optiworld-grid { grid-template-columns: repeat(2, 1fr); aspect-ratio: 3 / 1; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .chip { padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; color: rgba(255,255,255,.72); background: rgba(255,255,255,.045); font-size: 12px; font-weight: 700; }
   .project-no { color: rgba(255,255,255,.30); font-size: 13px; font-weight: 850; letter-spacing: .15em; }
+  .project-kicker { display: flex; align-items: baseline; gap: 14px; min-width: 0; }
+  .paper-line { display: flex; align-items: baseline; gap: 9px; min-width: 0; font-size: 12px; line-height: 1.35; }
+  .paper-line strong { flex: none; color: var(--cyan); font-size: 11px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+  .paper-line span { color: rgba(255,255,255,.68); font-weight: 650; }
   .project-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  .project-points div { padding: 13px 14px; border-left: 2px solid rgba(112,225,208,.42); background: rgba(255,255,255,.035); }
+  .project-points div { padding: 9px 12px; border-left: 2px solid rgba(112,225,208,.42); background: rgba(255,255,255,.035); }
   .project-points small { display: block; margin-bottom: 5px; color: var(--cyan); font-size: 10px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
-  .project-points span { color: rgba(255,255,255,.78); font-size: 13px; line-height: 1.35; }
+  .project-points span { color: rgba(255,255,255,.78); font-size: 12.5px; line-height: 1.32; }
 
   .question { display: grid; gap: clamp(26px, 5vh, 50px); text-align: center; justify-items: center; }
   .question h2 { max-width: 1180px; }
   .overview { gap: clamp(22px, 3.5vh, 36px); }
-  .overview-intro { display: grid; gap: 10px; }
-  .overview-intro h2 { max-width: 1120px; font-size: clamp(36px, 4.6vw, 66px); }
-  .overview-intro .lede { max-width: 1160px; font-size: clamp(18px, 1.8vw, 27px); }
+  .overview-intro { display: grid; }
+  .overview-intro h2 { max-width: 1180px; font-size: clamp(38px, 4.8vw, 68px); }
   .timeline { position: relative; display: grid; width: 100%; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 2vw, 28px); }
   .timeline::before {
     content: "";
@@ -183,7 +191,7 @@
   }
   .milestone h3 { margin-top: 8px; font-size: clamp(19px, 1.75vw, 27px); }
   .milestone-meta { color: var(--tone); font-size: 10px; font-weight: 850; letter-spacing: .11em; text-transform: uppercase; }
-  .milestone-venue { color: rgba(255,255,255,.62); font-size: 11px; font-weight: 750; letter-spacing: .035em; }
+  .milestone-venue { color: var(--ink); font-size: 12px; font-weight: 900; letter-spacing: .045em; }
   .milestone p { max-width: 250px; font-size: 13px; line-height: 1.42; }
 
   .nav { position: fixed; z-index: 30; right: clamp(18px, 3vw, 44px); bottom: 22px; display: flex; gap: 8px; }
@@ -196,7 +204,6 @@
     .slide { position: relative; min-height: 100vh; height: auto; overflow: auto; }
     .slide:not(.active) { display: none; }
     .safe { height: auto; min-height: calc(100vh - 142px); }
-    .split { grid-template-columns: 1fr; }
     .split { align-content: start; }
     .figure { max-height: 40vh; }
     .project-points { grid-template-columns: 1fr; }
@@ -205,6 +212,9 @@
     .topbar { top: 12px; }
     .brand { display: none; }
     .slide { padding: 56px 18px 92px; }
+    .project-kicker, .paper-line { display: grid; gap: 4px; }
+    .split .media-grid, .split .figure { height: auto; max-height: none; }
+    .media-grid.genphoto-grid { grid-template-columns: repeat(2, 1fr); aspect-ratio: 3 / 2; }
     .timeline { grid-template-columns: 1fr; gap: 20px; }
     .timeline::before { top: 29px; bottom: 29px; left: 27px; right: auto; width: 4px; height: auto; }
     .milestone { grid-template-columns: 58px 1fr; grid-template-rows: auto auto auto auto; justify-items: start; column-gap: 14px; padding: 0; text-align: left; }
@@ -244,9 +254,7 @@
   <section class="slide" data-route="mission" aria-label="Research mission">
     <div class="safe overview">
       <div class="overview-intro">
-        <div class="eyebrow">One question · Four perspectives</div>
-        <h2>World generation begins with the rules that make a world coherent.</h2>
-        <p class="lede">Can generative models follow physical rules across <span class="accent">camera, dynamics, space–time, and action?</span></p>
+        <h2>Can generative models follow physical rules across <span class="accent">camera, dynamics, space–time, and action?</span></h2>
       </div>
       <div class="timeline">
         <a class="milestone" href="#genphoto">
@@ -284,16 +292,18 @@
   <section class="slide" data-route="genphoto" aria-label="Generative Photography">
     <div class="safe split">
       <div class="copy">
-        <div class="project-no">01 / 04</div>
-        <div class="eyebrow">Generative Photography · CVPR 2025 Highlight</div>
-        <h2>Control the camera, preserve the world.</h2>
-        <p>Control bokeh, focal length, shutter speed, and color temperature while preserving scene identity.</p>
-        <div class="project-points">
-          <div><small>Problem</small><span>Camera prompts do not obey optics.</span></div>
-          <div><small>Idea</small><span>Dimensional lifting disentangles scene and camera; differentiated parameter injection enables fine-grained control.</span></div>
-          <div><small>Result</small><span>Controllable effects with stronger scene consistency.</span></div>
+        <div class="project-kicker">
+          <div class="project-no">01 / 04</div>
+          <div class="paper-line"><strong>CVPR 2025 Highlight</strong><span>Generative Photography: Scene-Consistent Camera Control for Realistic Text-to-Image Synthesis</span></div>
         </div>
-        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/GenerativePhotography/" target="_blank" rel="noopener">Project page ↗</a><a class="button" href="#map">Back to map</a></div>
+        <h2>Control the camera, preserve the world.</h2>
+        <p>Scene-consistent camera control for realistic text-to-image synthesis.</p>
+        <div class="project-points">
+          <div><small>Problem</small><span>Camera prompts do not obey imaging physics.</span></div>
+          <div><small>Idea</small><span>Dimensional lifting disentangles scene and camera; differentiated parameter injection enables fine-grained control.</span></div>
+          <div><small>Result</small><span>Control bokeh, focal length, shutter speed, and color temperature while preserving scene identity.</span></div>
+        </div>
+        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/GenerativePhotography/" target="_blank" rel="noopener">Project page ↗</a><a class="button" href="#mission">Back to overview</a></div>
       </div>
       <div class="figure-wrap glass">
         <div class="media-grid genphoto-grid" aria-label="Generative Photography camera-control results">
@@ -309,16 +319,18 @@
   <section class="slide" data-route="newtongen" aria-label="NewtonGen">
     <div class="safe split">
       <div class="copy">
-        <div class="project-no">02 / 04</div>
-        <div class="eyebrow">NewtonGen · ICLR 2026</div>
+        <div class="project-kicker">
+          <div class="project-no">02 / 04</div>
+          <div class="paper-line"><strong>ICLR 2026</strong><span>NewtonGen: Physics-Consistent and Controllable Text-to-Video Generation via Neural Newtonian Dynamics</span></div>
+        </div>
         <h2>Give video generation a sense of physics.</h2>
-        <p>Learn Neural Newtonian Dynamics, then guide video generation with explicit physical states.</p>
+        <p>Physics-consistent and controllable text-to-video generation.</p>
         <div class="project-points">
           <div><small>Problem</small><span>Video models imitate motion without understanding it.</span></div>
-          <div><small>Idea</small><span>Linear neural ODEs plus a residual model.</span></div>
+          <div><small>Idea</small><span>Learn Neural Newtonian Dynamics, then guide video generation with explicit physical states.</span></div>
           <div><small>Result</small><span>Diverse motion with explicit parameter control.</span></div>
         </div>
-        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/NewtonGen/" target="_blank" rel="noopener">Project page ↗</a><a class="button" href="#map">Back to map</a></div>
+        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/NewtonGen/" target="_blank" rel="noopener">Project page ↗</a><a class="button" href="#mission">Back to overview</a></div>
       </div>
       <div class="figure-wrap glass">
         <div class="media-grid newtongen-grid" aria-label="NewtonGen physics-consistent motion results">
@@ -332,16 +344,18 @@
   <section class="slide" data-route="seeu" aria-label="SeeU">
     <div class="safe split">
       <div class="copy">
-        <div class="project-no">03 / 04</div>
-        <div class="eyebrow">SeeU · CVPR 2026</div>
+        <div class="project-kicker">
+          <div class="project-no">03 / 04</div>
+          <div class="paper-line"><strong>CVPR 2026</strong><span>SeeU: Seeing the Unseen World via 4D Dynamics-Aware Generation</span></div>
+        </div>
         <h2>See beyond the observed time and space.</h2>
-        <p>Lift sparse 2D observations into a continuous 4D world across unseen times and viewpoints.</p>
+        <p>Continuous 4D dynamics modeling and video generation.</p>
         <div class="project-points">
           <div><small>Problem</small><span>Observations are sparse in both time and viewpoint.</span></div>
           <div><small>Idea</small><span>Model continuous physical equations of motion in a 4D world.</span></div>
           <div><small>Result</small><span>Temporal, spatial, and edited unseen-world generation.</span></div>
         </div>
-        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/SeeU/" target="_blank" rel="noopener">Project page ↗</a><a class="button" href="#map">Back to map</a></div>
+        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/SeeU/" target="_blank" rel="noopener">Project page ↗</a><a class="button" href="#mission">Back to overview</a></div>
       </div>
       <div class="figure-wrap glass">
         <div class="media-grid seeu-grid" aria-label="SeeU unseen world generation results">
@@ -356,16 +370,18 @@
   <section class="slide" data-route="optiworld" aria-label="OptiWorld">
     <div class="safe split">
       <div class="copy">
-        <div class="project-no">04 / 04</div>
-        <div class="eyebrow">OptiWorld · Under Review</div>
-        <h2>Plan a better future, then render it.</h2>
-        <p>Optimize goal-directed trajectories under physical constraints before rendering the future.</p>
-        <div class="project-points">
-          <div><small>Problem</small><span>Plausible futures can still be unsafe or inefficient.</span></div>
-          <div><small>Idea</small><span>Unify constraints on a trajectory manifold, then actively perceive and plan the optimal path.</span></div>
-          <div><small>Result</small><span>Goal-conditioned and counterfactual world generation.</span></div>
+        <div class="project-kicker">
+          <div class="project-no">04 / 04</div>
+          <div class="paper-line"><strong>Under Review</strong><span>OptiWorld: Optimal Control for Video World Generation under Physical Constraints</span></div>
         </div>
-        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/OptiWorld/" target="_blank" rel="noopener">Project page ↗</a><a class="button" href="#map">Back to map</a></div>
+        <h2>Plan a better future, then render it.</h2>
+        <p>OptiWorld makes video world models choose better futures: safer, smoother, more efficient, and physically constrained motions before rendering.</p>
+        <div class="project-points">
+          <div><small>Problem</small><span>Current video generation lacks proactive understanding and control, producing results that may be unsafe or inefficient.</span></div>
+          <div><small>Idea</small><span>Introduce classical optimal control before video rendering.</span></div>
+          <div><small>Result</small><span>Safer, more efficient goal-conditioned I2V and video refinement.</span></div>
+        </div>
+        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/OptiWorld/" target="_blank" rel="noopener">Project page ↗</a><a class="button" href="#mission">Back to overview</a></div>
       </div>
       <div class="figure-wrap glass">
         <div class="media-grid optiworld-grid" aria-label="OptiWorld controlled video generation results">
