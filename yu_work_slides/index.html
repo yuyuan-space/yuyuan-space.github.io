@@ -18,6 +18,7 @@
     --blue: #77a9ff;
     --gold: #f4bd73;
     --coral: #ff897d;
+    --violet: #c6a0ff;
     --shadow: 0 28px 90px rgba(0,0,0,.38);
   }
   * { box-sizing: border-box; }
@@ -158,16 +159,16 @@
   .overview { gap: clamp(42px, 7vh, 64px); }
   .overview-intro { display: grid; }
   .overview-intro h2 { max-width: 1180px; font-size: clamp(38px, 4.8vw, 68px); }
-  .timeline { position: relative; display: grid; width: 100%; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 2vw, 28px); }
+  .timeline { position: relative; display: grid; width: 100%; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(12px, 2vw, 28px); }
   .timeline::before {
     content: "";
     position: absolute;
     top: 27px;
-    left: 12.5%;
-    right: 12.5%;
+    left: 10%;
+    right: 10%;
     height: 4px;
     border-radius: 99px;
-    background: linear-gradient(90deg, var(--coral), var(--gold), var(--blue), var(--cyan));
+    background: linear-gradient(90deg, var(--coral), var(--gold), var(--blue), var(--cyan), var(--violet));
     box-shadow: 0 0 28px rgba(112,225,208,.24);
   }
   .milestone {
@@ -186,6 +187,7 @@
   .milestone:nth-child(2) { --tone: var(--gold); }
   .milestone:nth-child(3) { --tone: var(--blue); }
   .milestone:nth-child(4) { --tone: var(--cyan); }
+  .milestone:nth-child(5) { --tone: var(--violet); }
   .milestone-dot {
     display: grid;
     width: 58px;
@@ -238,6 +240,40 @@
     .milestone-meta { grid-column: 2; grid-row: 3; }
     .nav { right: 14px; bottom: 14px; }
   }
+  .project-timeline {
+    grid-column: 1 / -1;
+    width: 100%;
+    padding: 4px 0 12px;
+  }
+  .project-timeline .timeline { --step-gap: 12px; gap: var(--step-gap); }
+  .project-timeline .timeline::before { display: none; }
+  .project-timeline .milestone:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 18px;
+    left: calc(50% + 28px);
+    width: max(0px, calc(100% + var(--step-gap) - 56px));
+    height: 2px;
+    background: var(--tone);
+    opacity: .45;
+    pointer-events: none;
+  }
+  .project-timeline .milestone:hover { transform: none; }
+  .project-timeline .milestone { gap: 6px; padding: 0 4px; opacity: .48; }
+  .project-timeline .milestone:hover,
+  .project-timeline .milestone[aria-current="step"] { opacity: 1; }
+  .project-timeline .milestone-dot { width: 38px; height: 38px; font-size: 11px; box-shadow: 0 0 0 5px var(--bg); }
+  .project-timeline .milestone[aria-current="step"] .milestone-dot { outline: 2px solid var(--tone); outline-offset: 5px; }
+  .project-timeline .milestone h3 { margin-top: 5px; font-size: clamp(12px, 1.2vw, 18px); line-height: 1.2; }
+  .project-timeline .milestone[aria-current="step"] h3 { color: var(--tone); }
+  .project-timeline .milestone-venue,
+  .project-timeline .milestone-meta { display: none; }
+  @media (max-width: 640px) {
+    .project-timeline .timeline { --step-gap: 5px; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .project-timeline .milestone { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0; }
+    .project-timeline .milestone h3 { font-size: 10px; overflow-wrap: anywhere; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
   }
@@ -247,7 +283,7 @@
 <div class="topbar" aria-hidden="true">
   <span class="brand">Yu Yuan · Towards Physics-consistent and Controllable Generative Worlds</span>
   <div class="progress"><i id="bar"></i></div>
-  <span id="count">01 / 07</span>
+  <span id="count">01 / 08</span>
 </div>
 
 <main class="deck" id="deck">
@@ -267,7 +303,7 @@
   <section class="slide" data-route="mission" aria-label="Research mission">
     <div class="safe overview">
       <div class="overview-intro">
-        <h2>Can generative models follow physical rules across <span class="accent">camera, dynamics, space–time, and action?</span></h2>
+        <h2>Can generative models follow physical rules across <span class="accent">camera, dynamics, space–time, action, and editing?</span></h2>
       </div>
       <div class="timeline">
         <a class="milestone" href="#genphoto">
@@ -294,6 +330,12 @@
           <span class="milestone-venue">NeurIPS 2026</span>
           <span class="milestone-meta">Action · Optimal control</span>
         </a>
+        <a class="milestone" href="#rvd">
+          <span class="milestone-dot">05</span>
+          <h3>RVD</h3>
+          <span class="milestone-venue">Under Review</span>
+          <span class="milestone-meta">Editing · World dynamics</span>
+        </a>
       </div>
     </div>
   </section>
@@ -302,7 +344,7 @@
     <div class="safe split">
       <div class="copy">
         <div class="project-kicker">
-          <div class="project-no">01 / 04</div>
+          <div class="project-no">01 / 05</div>
           <div class="paper-line"><strong>CVPR 2025 Highlight</strong><span>Generative Photography: Scene-Consistent Camera Control for Realistic Text-to-Image Synthesis</span></div>
         </div>
         <h2>Control the camera, preserve the world.</h2>
@@ -312,7 +354,7 @@
           <div><small>Idea</small><span>Dimensional lifting disentangles scene and camera; differentiated parameter injection enables fine-grained control.</span></div>
           <div><small>Result</small><span>Control bokeh, focal length, shutter speed, and color temperature while preserving scene identity.</span></div>
         </div>
-        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/GenerativePhotography/" target="_blank" rel="noopener">Project page ↗</a><a class="button" href="#mission">Back to overview</a></div>
+        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/GenerativePhotography/" target="_blank" rel="noopener">Project page ↗</a></div>
       </div>
       <div class="figure-wrap glass">
         <div class="media-grid genphoto-grid" aria-label="Generative Photography camera-control results">
@@ -329,7 +371,7 @@
     <div class="safe split">
       <div class="copy">
         <div class="project-kicker">
-          <div class="project-no">02 / 04</div>
+          <div class="project-no">02 / 05</div>
           <div class="paper-line"><strong>ICLR 2026</strong><span>NewtonGen: Physics-Consistent and Controllable Text-to-Video Generation via Neural Newtonian Dynamics</span></div>
         </div>
         <h2>Give video generation a sense of physics.</h2>
@@ -339,7 +381,7 @@
           <div><small>Idea</small><span>Learn Neural Newtonian Dynamics, then guide video generation with explicit physical states.</span></div>
           <div><small>Result</small><span>Diverse, physically consistent, and controllable video generation.</span></div>
         </div>
-        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/NewtonGen/" target="_blank" rel="noopener">Project page ↗</a><a class="button" href="#mission">Back to overview</a></div>
+        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/NewtonGen/" target="_blank" rel="noopener">Project page ↗</a></div>
       </div>
       <div class="figure-wrap glass">
         <div class="media-grid newtongen-grid" aria-label="NewtonGen physics-consistent motion results">
@@ -354,7 +396,7 @@
     <div class="safe split">
       <div class="copy">
         <div class="project-kicker">
-          <div class="project-no">03 / 04</div>
+          <div class="project-no">03 / 05</div>
           <div class="paper-line"><strong>CVPR 2026</strong><span>SeeU: Seeing the Unseen World via 4D Dynamics-Aware Generation</span></div>
         </div>
         <h2>See beyond the observed time and space.</h2>
@@ -364,7 +406,7 @@
           <div><small>Idea</small><span>Learn continuous 4D dynamics as the backbone of 4D world generation.</span></div>
           <div><small>Result</small><span>Temporal, spatial, and edited unseen-world generation.</span></div>
         </div>
-        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/SeeU/" target="_blank" rel="noopener">Project page ↗</a><a class="button" href="#mission">Back to overview</a></div>
+        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/SeeU/" target="_blank" rel="noopener">Project page ↗</a></div>
       </div>
       <div class="figure-wrap glass">
         <div class="media-grid seeu-grid" aria-label="SeeU unseen world generation results">
@@ -380,7 +422,7 @@
     <div class="safe split">
       <div class="copy">
         <div class="project-kicker">
-          <div class="project-no">04 / 04</div>
+          <div class="project-no">04 / 05</div>
           <div class="paper-line"><strong>NeurIPS 2026</strong><span>OptiWorld: Optimal Control for Video World Generation under Physical Constraints</span></div>
         </div>
         <h2>Plan a better future, then render it.</h2>
@@ -390,13 +432,35 @@
           <div><small>Idea</small><span>Introduce classical optimal control before video rendering.</span></div>
           <div><small>Result</small><span>Safer, more efficient goal-conditioned I2V and video refinement.</span></div>
         </div>
-        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/OptiWorld/" target="_blank" rel="noopener">Project page ↗</a><a class="button" href="#mission">Back to overview</a></div>
+        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/OptiWorld/" target="_blank" rel="noopener">Project page ↗</a></div>
       </div>
       <div class="figure-wrap glass">
         <div class="media-grid optiworld-grid" aria-label="OptiWorld controlled video generation results">
           <img src="../images/OptiWorld.gif" alt="OptiWorld research teaser">
           <video autoplay loop muted playsinline preload="metadata" aria-label="OptiWorld goal-conditioned image-to-video Case 6"><source src="https://yuyuanspace.com/OptiWorld/static/videos/optiworld/image_goal_conditioned_I2V/comparison_6/OptiWorld.mp4" type="video/mp4"></video>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-route="rvd" aria-label="RVD: Edit world dynamics">
+    <div class="safe split">
+      <div class="copy">
+        <div class="project-kicker">
+          <div class="project-no">05 / 05</div>
+          <div class="paper-line"><strong>Under Review</strong><span>RVD: Reimagine Video Dynamics</span></div>
+        </div>
+        <h2>Edit world dynamics</h2>
+        <p>Edit how a world evolves by disentangling video dynamics from visual context.</p>
+        <div class="project-points">
+          <div><small>Problem</small><span>Appearance and motion are entangled, making dynamics difficult to edit while preserving the scene.</span></div>
+          <div><small>Idea</small><span>Learn a compact dynamics token and edit it with language instructions, then render it with the visual context.</span></div>
+          <div><small>Result</small><span>Video dynamics editing, training-free retiming, and appearance re-rendering.</span></div>
+        </div>
+        <div class="actions"><a class="button primary" href="https://yuyuanspace.com/RVD/" target="_blank" rel="noopener">Project page ↗</a></div>
+      </div>
+      <div class="figure-wrap glass">
+        <img class="figure" src="../images/RVD_teaser.gif" alt="RVD examples: dynamics editing, retiming, and appearance re-rendering">
       </div>
     </div>
   </section>
@@ -425,6 +489,21 @@
 (() => {
   const slides = [...document.querySelectorAll('.slide')];
   const routes = slides.map(slide => slide.dataset.route);
+  // Reuse the overview milestones so project navigation stays in sync.
+  const overviewTimeline = document.querySelector('.overview .timeline');
+  document.querySelectorAll('.slide .safe.split').forEach(layout => {
+    const route = layout.closest('.slide').dataset.route;
+    const navigation = document.createElement('nav');
+    navigation.className = 'project-timeline';
+    navigation.setAttribute('aria-label', 'Research progress and project navigation');
+    const timeline = overviewTimeline.cloneNode(true);
+    timeline.querySelectorAll('.milestone').forEach(link => {
+      if (link.getAttribute('href') === `#${route}`) link.setAttribute('aria-current', 'step');
+    });
+    navigation.append(timeline);
+    layout.prepend(navigation);
+  });
+
   const bar = document.getElementById('bar');
   const count = document.getElementById('count');
   const fullscreenButton = document.getElementById('fullscreenButton');
